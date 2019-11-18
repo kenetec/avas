@@ -1,110 +1,59 @@
 #include "ofApp.h"
 
-// void ofApp::setup() {
-//    ofSetWindowTitle("AVAS");
-//    ofSoundStreamSetup(1, 0);
-//}
-//
-// void ofApp::draw() {
-//    ofBackground(ofColor::black);
-//    ofSetLineWidth(5);
-//    ofSetColor(ofColor::lightGreen);
-//    out_line.draw();
-//    ofSetColor(ofColor::cyan);
-//    wave_line.draw();
-//}
-//
-// void ofApp::audioOut(ofSoundBuffer &out_buffer) {
-//    double phase = 0;
-//    for (int i = 0; i < out_buffer.size(); i += 2) {
-//        float sample = sin(phase);
-//        out_buffer[i] = sample;
-//        out_buffer[i + 1] = sample;
-//        phase += 0.05;
-//    }
-//}
-
 /*
- ALL Code from: https://openframeworks.cc/ofBook/chapters/sound.html
- */
+Code derived from: https://www.youtube.com/watch?v=IiTsE7P-GDs&list=PL4neAtv21WOmrV8z9rSzL20QpdLU1zJLr&index=37&t=481s
+*/
+
 void ofApp::setup() {
-    phase = 0;
-    updateWaveform(32);
+    ofSetWindowTitle("AVAS");
     ofSoundStreamSetup(3, 0);  // 3 output streams, 0 input stream
-    frequency = 0;
-    frequencyTarget = frequency;
     volume = 0;
+    sound_player.loadSound(
+        R"(C:\Users\heste\source\repos\CS126FA19\fantastic-finale-kenetec\resources\surface.mp3)");
+    fftSmooth = new float[8192];
+
+    for (int i = 0; i < 8192; i++) {
+        fftSmooth[i] = 0;
+    }
+
+    bands = 64;
+
+    sound_player.setLoop(true);
+    sound_player.setVolume(0.2f);
 }
 
 void ofApp::update() {
-    ofScopedLock waveformLock(waveformMutex);
-    updateWaveform(ofMap(ofGetMouseX(), 0, ofGetWidth(), 3, 64, true));
-    frequency = ofLerp(frequency, frequencyTarget, 0.4);
+    ofSoundUpdate();
+    float* value = ofSoundGetSpectrum(bands);
 
-    if (ofGetKeyPressed()) {
-        volume = ofLerp(volume, 1, 0.8);  // jump quickly to 1
-    } else {
-        volume = ofLerp(volume, 0, 0.1);  // fade slowly to 0
+    for (int i = 0; i < bands; i++) {
+        fftSmooth[i] *= 0.9f;
+
+        if (fftSmooth[i] < value[i]) {
+            fftSmooth[i] = value[i];
+        }
     }
 }
 
 void ofApp::draw() {
-    ofBackground(ofColor::black);
-    ofSetLineWidth(5);
-    ofSetColor(ofColor::lightGreen);
-    outLine.draw();
-    ofSetColor(ofColor::cyan);
-    waveLine.draw();
-}
+    ofSetColor(255);
 
-void ofApp::updateWaveform(int waveformResolution) {
-    waveform.resize(waveformResolution);
-    waveLine.clear();
-
-    // "waveformStep" maps a full oscillation of sin() to the size
-    // of the waveform lookup table
-    float waveformStep = (3.14 * 2.) / (float)waveform.size();
-
-    for (int i = 0; i < waveform.size(); i++) {
-        waveform[i] = sin(i * waveformStep);
-
-        waveLine.addVertex(ofMap(i, 0, waveform.size() - 1, 0, ofGetWidth()),
-                           ofMap(waveform[i], -1, 1, 0, ofGetHeight()));
+    for (int i = 0; i < bands; i++) {
+        ofCircle(ofGetWidth() / 2, ofGetHeight() / 2, -(fftSmooth[i] * 150));
     }
 }
 
-void ofApp::audioOut(ofSoundBuffer &out_buffer) {
-    ofScopedLock waveformLock(waveformMutex);
-
-    float sampleRate = 44100;
-    float phaseStep = frequency / sampleRate;
-
-    outLine.clear();
-
-    for (int i = 0; i < out_buffer.size(); i += 2) {
-        phase += phaseStep;
-        int waveformIndex = (int)(phase * waveform.size()) % waveform.size();
-        out_buffer[i] = waveform[waveformIndex] * volume;
-
-        outLine.addVertex(ofMap(i, 0, out_buffer.size() - 1, 0, ofGetWidth()),
-                          ofMap(out_buffer[i], -1, 1, 0, ofGetHeight()));
-    }
-}
+void ofApp::audioOut(ofSoundBuffer& out_buffer) {}
 
 void ofApp::keyPressed(int key) {
-    if (key == 'z') {
-        frequencyTarget = 261.63;  // C
-    } else if (key == 'x') {
-        frequencyTarget = 293.67;  // D
-    } else if (key == 'c') {
-        frequencyTarget = 329.63;  // E
-    } else if (key == 'v') {
-        frequencyTarget = 349.23;  // F
-    } else if (key == 'b') {
-        frequencyTarget = 392.00;  // G
-    } else if (key == 'n') {
-        frequencyTarget = 440.00;  // A
-    } else if (key == 'm') {
-        frequencyTarget = 493.88;  // B
+    switch (key) {
+        case '1':
+            sound_player.play();
+            break;
+        case '2':
+            sound_player.stop();
+            break;
+        default:
+            break;
     }
 }

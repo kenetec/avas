@@ -11,6 +11,9 @@ enum NoteType {
 };
 
 class Note {
+   public:
+    Note();
    private:
-	   ofSoundPlayer sound_player;
+	ofSoundPlayer sound_player;
+    double duration;
 };

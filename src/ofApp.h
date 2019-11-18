@@ -2,38 +2,22 @@
 
 #include "ofMain.h"
 
-//class ofApp : public ofBaseApp {
-//   private:
-//    ofPolyline out_line;
-//    ofPolyline wave_line;
-//   public:
-//    void setup();
-//    void draw();
-//    void audioOut(ofSoundBuffer &out_buffer);
-//};
-
 /*
- ALL Code from: https://openframeworks.cc/ofBook/chapters/sound.html
- */
+Code derived from:
+https://www.youtube.com/watch?v=IiTsE7P-GDs&list=PL4neAtv21WOmrV8z9rSzL20QpdLU1zJLr&index=37&t=481s
+*/
 
 class ofApp : public ofBaseApp {
    public:
     void setup();
     void update();
     void draw();
-
-    void updateWaveform(int waveformResolution);
     void audioOut(ofSoundBuffer &out_buffer);
-	
 	void keyPressed(int key);
-    float frequencyTarget;
-
-    std::vector<float> waveform;  // this is the lookup table
-    double phase;
-    float frequency;
-
-    ofMutex waveformMutex;
-    ofPolyline waveLine;
-    ofPolyline outLine;
+    
+private:
+	ofSoundPlayer sound_player;
+    float *fftSmooth;
+    int bands;
     float volume;
 };
