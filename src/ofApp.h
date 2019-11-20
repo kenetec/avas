@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ofMain.h"
+#include <ofMain.h>
 
 /*
 Code derived from:
@@ -18,6 +18,6 @@ class ofApp : public ofBaseApp {
 private:
 	ofSoundPlayer sound_player;
     float *fftSmooth;
-    int bands;
+    int bands_;
     float volume;
 };
