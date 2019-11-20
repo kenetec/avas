@@ -37,12 +37,18 @@
     <ClCompile Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release (1)\of_v0.10.1_vs2017_release\addons\ofxGui\src\ofxToggle.cpp">
       <Filter>addons\ofxGui\src</Filter>
     </ClCompile>
-    <ClCompile Include="ofApp.cpp">
+    <ClCompile Include="src\Measure.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="Note.cpp" />
-    <ClCompile Include="Measure.cpp" />
-    <ClCompile Include="Score.cpp" />
+    <ClCompile Include="src\Note.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofApp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Score.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -62,6 +68,9 @@
     </Filter>
     <Filter Include="addons\ofxUnitTests\src">
       <UniqueIdentifier>{6DB6A1EA-29BB-7859-928B-898A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests">
+      <UniqueIdentifier>{21160027-7e08-4a81-b4db-289c11c792b9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -104,11 +113,20 @@
     <ClInclude Include="src\ofApp.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="Note.h" />
-    <ClInclude Include="Measure.h" />
-    <ClInclude Include="Score.h" />
+    <ClInclude Include="src\Measure.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Note.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Score.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="CMakeLists.txt" />
   </ItemGroup>
 </Project>
