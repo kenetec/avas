@@ -14,6 +14,6 @@ class Note {
    public:
     Note();
    private:
-	ofSoundPlayer sound_player;
-    double duration;
+	ofSoundPlayer sound_;
+    double duration_;
 };

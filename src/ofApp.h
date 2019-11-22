@@ -3,7 +3,7 @@
 #include <ofMain.h>
 #include <map>
 
-#include "MainGui.h"
+#include "gui/MainGui.h"
 
 /*
 ALL Code derived from:
@@ -19,9 +19,9 @@ class ofApp : public ofBaseApp {
 	void keyPressed(int key);
     
 private:
-        MainGui main_gui_;
+    MainGui main_gui_;
 	ofSoundPlayer sound_player;
- ofSoundPlayer sound_player_2;
+	ofSoundPlayer sound_player_2;
     float *fftSmooth;
     int bands_;
     float volume;
