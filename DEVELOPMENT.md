@@ -6,4 +6,4 @@
 	- Helped in understanding FFT
 - Attempted to implement CMake but horribly failed (will try again another time).
 - Added ofxImGui for most robust GUI system.
-- Began writing system for formatting musical notes into songs.
+- Began writing system for music composition.
