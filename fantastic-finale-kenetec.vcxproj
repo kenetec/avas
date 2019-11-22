@@ -120,7 +120,7 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;src\gui;..\..\..\..\Desktop\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxGui\src;..\..\..\..\Desktop\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxImGui\libs;..\..\..\..\Desktop\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxImGui\libs\imgui;..\..\..\..\Desktop\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxImGui\libs\imgui\src;..\..\..\..\Desktop\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxImGui\src;..\..\..\..\Desktop\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxUnitTests\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>include;%(AdditionalIncludeDirectories);src;src\gui;..\..\..\..\Desktop\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxGui\src;..\..\..\..\Desktop\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxImGui\libs;..\..\..\..\Desktop\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxImGui\libs\imgui;..\..\..\..\Desktop\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxImGui\libs\imgui\src;..\..\..\..\Desktop\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxImGui\src;..\..\..\..\Desktop\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxUnitTests\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <ObjectFileName>$(IntDir)</ObjectFileName>
