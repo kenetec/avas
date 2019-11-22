@@ -30,6 +30,10 @@ void ofApp::setup() {
     sound_player.setVolume(1.0f);
 }
 
+/*
+ALL Code derived from:
+https://www.youtube.com/watch?v=IiTsE7P-GDs&list=PL4neAtv21WOmrV8z9rSzL20QpdLU1zJLr&index=37&t=481s
+*/
 void ofApp::update() {
     ofSoundUpdate();
     float* value = ofSoundGetSpectrum(bands_);
