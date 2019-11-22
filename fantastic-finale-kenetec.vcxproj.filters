@@ -7,6 +7,12 @@
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Beat.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gui\MainGui.cpp">
+      <Filter>src\gui</Filter>
+    </ClCompile>
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -88,13 +94,16 @@
     <ClCompile Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxImGui\libs\imgui\src\imgui_widgets.cpp">
       <Filter>addons\ofxImGui\libs\imgui\src</Filter>
     </ClCompile>
-    <ClCompile Include="src\gui\MainGui.cpp">
-      <Filter>src\gui</Filter>
+    <ClCompile Include="src\SoundLoader.cpp">
+      <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
       <UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\gui">
+      <UniqueIdentifier>{A7F2D870-EEB9-68A7-0DA0-CEB2}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons">
       <UniqueIdentifier>{71834F65-F3A9-211E-73B8-DC85}</UniqueIdentifier>
@@ -126,13 +135,16 @@
     <Filter Include="addons\ofxUnitTests\src">
       <UniqueIdentifier>{6DB6A1EA-29BB-7859-928B-898A}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\gui">
-      <UniqueIdentifier>{0ff8e426-6693-4edf-8f71-a7a03d36dd91}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ofApp.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Beat.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gui\MainGui.h">
+      <Filter>src\gui</Filter>
     </ClInclude>
     <ClInclude Include="src\Measure.h">
       <Filter>src</Filter>
@@ -230,8 +242,8 @@
     <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxUnitTests\src\ofxUnitTests.h">
       <Filter>addons\ofxUnitTests\src</Filter>
     </ClInclude>
-    <ClInclude Include="src\gui\MainGui.h">
-      <Filter>src\gui</Filter>
+    <ClInclude Include="src\SoundLoader.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

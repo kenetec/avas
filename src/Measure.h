@@ -12,7 +12,7 @@ struct TimeSignature {
 class Measure {
    public:
     Measure(TimeSignature time_signature);
-    Beat *GetBeat(int index);
+    Beat* GetBeat(int index);
    private:
     TimeSignature time_signature_;
     vector<Beat> beats_;
