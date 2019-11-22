@@ -1,9 +1,9 @@
-resources/
 x64/
 Debug/
 obj/
 bin/
 out/
+resources/Loop Cult - Unit 808 Sample Pack/
 
 # Created by https://www.gitignore.io/api/xcode,visualstudio,openframeworks,openframeworks+visualstudio
 # Edit at https://www.gitignore.io/?templates=xcode,visualstudio,openframeworks,openframeworks+visualstudio
