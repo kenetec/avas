@@ -7,12 +7,19 @@ https://www.youtube.com/watch?v=IiTsE7P-GDs&list=PL4neAtv21WOmrV8z9rSzL20QpdLU1z
 
 void ofApp::setup() {
     ofSetWindowTitle("AVAS");
-    ofSoundStreamSetup(3, 0);  // 3 output streams for stereo/bluetooth, 0 input stream
+    ofSoundStreamSetup(
+        3, 0);  // 3 output streams for stereo/bluetooth, 0 input stream
+
+    main_gui_.setup();
+
     volume = 0;
     sound_player.loadSound(
         R"(C:\Users\heste\source\repos\CS126FA19\fantastic-finale-kenetec\resources\waves.mp3)");
 
-	bands_ = 128;
+    sound_player_2.loadSound(
+        R"(C:\Users\heste\source\repos\CS126FA19\fantastic-finale-kenetec\resources\Loop Cult - Unit 808 Sample Pack\LCU_808_samples\LCU_808_drum kits\LCU_808_drum kit 01\LCU_808_DKit_01_Crash.wav)");
+
+    bands_ = 128;
     fftSmooth = new float[bands_];
 
     for (int i = 0; i < bands_; i++) {
@@ -37,7 +44,9 @@ void ofApp::update() {
 }
 
 void ofApp::draw() {
-    //ofSetColor(ofColor(ofRandom(0, 255), ofRandom(0, 255), ofRandom(0, 255)));
+    // ofSetColor(ofColor(ofRandom(0, 255), ofRandom(0, 255), ofRandom(0,
+    // 255)));
+    main_gui_.draw();
     ofSetColor(255);
     for (int i = 0; i < bands_; i++) {
         ofRectangle rect;
@@ -46,7 +55,7 @@ void ofApp::draw() {
         rect.x = (ofGetWidth() / bands_) * i;
         rect.y = ofGetHeight();
 
-		ofDrawRectangle(rect);
+        ofDrawRectangle(rect);
     }
 }
 
@@ -59,6 +68,9 @@ void ofApp::keyPressed(int key) {
             break;
         case '2':
             sound_player.stop();
+            break;
+        case 'z':
+            sound_player_2.play();
             break;
         default:
             break;

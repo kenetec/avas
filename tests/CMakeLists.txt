@@ -1,2 +1,0 @@
-add_executable(fantastic_finale_kenetec_tests
-tests_main.cpp)
