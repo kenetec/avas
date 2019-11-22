@@ -13,4 +13,5 @@ class MainGui {
 
    private:
     ofxImGui::Gui gui;
+    bool active;
 };
