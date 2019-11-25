@@ -6,7 +6,7 @@
 
 int main() {
     ofSetupOpenGL(1280, 720, OF_WINDOW);
-    ofSetFrameRate(30);
+    ofSetFrameRate(60);
 
     ofRunApp(new ofApp());
 }

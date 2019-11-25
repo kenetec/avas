@@ -100,6 +100,12 @@
     <ClCompile Include="src\visualizer\Visualizer.cpp">
       <Filter>src\visualizer</Filter>
     </ClCompile>
+    <ClCompile Include="tests\main.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundLoaderTest.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -140,6 +146,9 @@
     </Filter>
     <Filter Include="src\visualizer">
       <UniqueIdentifier>{2e388505-b550-447d-b611-52460838e7fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests">
+      <UniqueIdentifier>{3a083d9c-0f65-4a8b-9d05-05e0856e5aed}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -257,5 +266,10 @@
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DEVELOPMENT.md" />
+    <None Include="PROPOSAL.md" />
+    <None Include="tests.runsettings" />
   </ItemGroup>
 </Project>

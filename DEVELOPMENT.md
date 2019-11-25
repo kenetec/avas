@@ -7,3 +7,8 @@
 - Attempted to implement CMake but horribly failed (will try again another time).
 - Added ofxImGui for most robust GUI system.
 - Began writing system for music composition.
+
+# Week 2
+### 11/25/19
+- Created Visualizer class and refactored code.
+- Got testing to work with Catch2.
