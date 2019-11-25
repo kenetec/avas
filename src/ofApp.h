@@ -4,6 +4,7 @@
 #include <map>
 
 #include "gui/MainGui.h"
+#include "visualizer/Visualizer.h"
 
 /*
 ALL Code derived from:
@@ -19,10 +20,14 @@ class ofApp : public ofBaseApp {
 	void keyPressed(int key);
     
 private:
-    MainGui main_gui_;
+    int kDefaultOutputStreams = 3; // 3 output streams for stereo/bluetooth
+    int kDefaultInputStreams = 0;
+
+	MainGui main_gui_;
+    Visualizer visualizer_;
+
 	ofSoundPlayer sound_player;
 	ofSoundPlayer sound_player_2;
-    float *fftSmooth;
-    int bands_;
+    
     float volume;
 };

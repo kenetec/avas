@@ -7,10 +7,10 @@ https://www.youtube.com/watch?v=IiTsE7P-GDs&list=PL4neAtv21WOmrV8z9rSzL20QpdLU1z
 
 void ofApp::setup() {
     ofSetWindowTitle("AVAS");
-    ofSoundStreamSetup(
-        3, 0);  // 3 output streams for stereo/bluetooth, 0 input stream
+    ofSoundStreamSetup(kDefaultOutputStreams, kDefaultInputStreams);
 
     main_gui_.setup();
+    visualizer_.setup();
 
     volume = 0;
     sound_player.loadSound(
@@ -18,13 +18,6 @@ void ofApp::setup() {
 
     sound_player_2.loadSound(
         R"(C:\Users\heste\source\repos\CS126FA19\fantastic-finale-kenetec\resources\Loop Cult - Unit 808 Sample Pack\LCU_808_samples\LCU_808_drum kits\LCU_808_drum kit 01\LCU_808_DKit_01_Crash.wav)");
-
-    bands_ = 128;
-    fftSmooth = new float[bands_];
-
-    for (int i = 0; i < bands_; i++) {
-        fftSmooth[i] = 0;
-    }
 
     sound_player.setLoop(true);
     sound_player.setVolume(1.0f);
@@ -36,31 +29,12 @@ https://www.youtube.com/watch?v=IiTsE7P-GDs&list=PL4neAtv21WOmrV8z9rSzL20QpdLU1z
 */
 void ofApp::update() {
     ofSoundUpdate();
-    float* value = ofSoundGetSpectrum(bands_);
-
-    for (int i = 0; i < bands_; i++) {
-        fftSmooth[i] *= 0.9f;
-
-        if (fftSmooth[i] < value[i]) {
-            fftSmooth[i] = value[i];
-        }
-    }
+    visualizer_.update();
 }
 
 void ofApp::draw() {
-    // ofSetColor(ofColor(ofRandom(0, 255), ofRandom(0, 255), ofRandom(0,
-    // 255)));
     main_gui_.draw();
-    ofSetColor(255);
-    for (int i = 0; i < bands_; i++) {
-        ofRectangle rect;
-        rect.width = ofGetWidth() / bands_;
-        rect.height = -(fftSmooth[i] * 100);
-        rect.x = (ofGetWidth() / bands_) * i;
-        rect.y = ofGetHeight();
-
-        ofDrawRectangle(rect);
-    }
+    visualizer_.draw();
 }
 
 void ofApp::audioOut(ofSoundBuffer& out_buffer) {}

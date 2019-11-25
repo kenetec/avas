@@ -210,6 +210,7 @@
     <ClCompile Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxImGui\libs\imgui\src\imgui_draw.cpp" />
     <ClCompile Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxImGui\libs\imgui\src\imgui_widgets.cpp" />
     <ClCompile Include="src\SoundLoader.cpp" />
+    <ClCompile Include="src\visualizer\Visualizer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ofApp.h" />
@@ -247,6 +248,7 @@
     <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxImGui\libs\imgui\src\imstb_truetype.h" />
     <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxUnitTests\src\ofxUnitTests.h" />
     <ClInclude Include="src\SoundLoader.h" />
+    <ClInclude Include="src\visualizer\Visualizer.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">
