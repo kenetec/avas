@@ -11,8 +11,9 @@ class Beat {
             Inserts note at specified index
     */
     void Insert(Note note, int index);
+    void SetBPM(int bpm);
 
    private:
     int subdivisions_;
-    Note *notes;
+    Note *notes_;
 };

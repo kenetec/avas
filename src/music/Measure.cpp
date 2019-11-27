@@ -6,3 +6,11 @@ Measure::Measure(TimeSignature time_signature)
 }
 
 Beat* Measure::GetBeat(int index) { return &beats_.at(index); }
+
+void Measure::Clear() { beats_.clear(); }
+
+void Measure::SetBPM(int bpm) {
+    for (Beat beats : beats_) {
+        beats.SetBPM(bpm);
+    }
+}

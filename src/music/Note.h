@@ -13,9 +13,10 @@ enum NoteType {
 class Note {
    public:
     Note();
-    Note(NoteType note_type){};
+    Note(NoteType note_type);
     Note(NoteType note_type, ofSoundPlayer *sound){};
     Note(NoteType note_type, ofSoundPlayer *sound, double duration){};
+    void CalculateDuration(int bpm);
 
    private:
     NoteType note_type_;

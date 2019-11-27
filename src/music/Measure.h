@@ -13,6 +13,8 @@ class Measure {
    public:
     Measure(TimeSignature time_signature);
     Beat* GetBeat(int index);
+    void Clear();
+    void SetBPM(int bpm);
    private:
     TimeSignature time_signature_;
     vector<Beat> beats_;
