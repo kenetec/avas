@@ -156,6 +156,9 @@
     <Filter Include="src\music">
       <UniqueIdentifier>{b779927a-1a39-418d-998c-ebe37e4a1b98}</UniqueIdentifier>
     </Filter>
+    <Filter Include="resources">
+      <UniqueIdentifier>{9e43ed88-ea90-4df0-b251-277b54d9bc83}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\gui\MainGui.h">
@@ -280,5 +283,16 @@
     <None Include="DEVELOPMENT.md" />
     <None Include="PROPOSAL.md" />
     <None Include="tests.runsettings" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="resources\broccoli.mp3">
+      <Filter>resources</Filter>
+    </Media>
+    <Media Include="resources\surface.mp3">
+      <Filter>resources</Filter>
+    </Media>
+    <Media Include="resources\waves.mp3">
+      <Filter>resources</Filter>
+    </Media>
   </ItemGroup>
 </Project>

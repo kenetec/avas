@@ -277,6 +277,11 @@
     <None Include="PROPOSAL.md" />
     <None Include="tests.runsettings" />
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="resources\broccoli.mp3" />
+    <Media Include="resources\surface.mp3" />
+    <Media Include="resources\waves.mp3" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ProjectExtensions>
     <VisualStudio>
