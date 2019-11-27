@@ -15,3 +15,8 @@
 ### 11/26/19
 - Extensively combed through imgui.h to get an idea of how API works (there is no dedicated documentation -_-).
 - Organized files into folders.
+- Add more functionality to music structures
+
+# Week 3
+### 11/27/19
+- Centralized GUI

@@ -9,10 +9,9 @@ void ofApp::setup() {
     ofSoundStreamSetup(kDefaultOutputStreams, kDefaultInputStreams);
 
 	gui_.setup();
-
     main_gui_.setup();
+        piano_roll_.setup();
     visualizer_.setup();
-    piano_roll_.setup();
 
     volume = 0;
     sound_player.loadSound(
@@ -36,16 +35,10 @@ void ofApp::draw() {
 
 	gui_.begin();
 
-	// put all gui calls in here  
     main_gui_.draw();
-	piano_roll_.draw();
+    piano_roll_.draw();
 
-	ImGui::SetNextWindowPos(ImVec2(400, 300));
-	ImGui::Begin("Hello", NULL);
-	ImGui::Text("Hello World!");
-        ImGui::End();
-
-	gui_.end();
+    gui_.end();
 
 	//float clearAlpha = 100;
  //   ofSetColor(255, clearAlpha);

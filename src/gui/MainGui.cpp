@@ -10,10 +10,10 @@ void MainGui::setup() {
 Code derived from: https://github.com/ocornut/imgui#integration
 */
 void MainGui::draw() {
-    ImGui::SetNextWindowSize(ImVec2(ofGetWidth(), 150.0f));
+    ImGui::SetNextWindowSize(ImVec2(ofGetWidth(), 200.0f));
     ImGui::SetNextWindowPos(ImVec2(0, 0));
 
-    ImGui::Begin("Music Editor", &active, ImGuiWindowFlags_MenuBar | ImGuiWindowFlags_NoMove);
+    ImGui::Begin("Music Editor", &active, ImGuiWindowFlags_MenuBar);
 
     if (ImGui::BeginMenuBar()) {
         if (ImGui::BeginMenu("File")) {
@@ -33,7 +33,7 @@ void MainGui::draw() {
 	ImVec2 canvas_pos = ImGui::GetCursorScreenPos();
 	ImVec2 canvas_size = ImGui::GetContentRegionAvail();
 
-    ImGui::InvisibleButton("MusicRoll", ImGui::GetContentRegionAvail());
+	ImGui::InvisibleButton("Composer", canvas_size);
 
     draw_list->AddRectFilledMultiColor(
 			canvas_pos,
@@ -46,6 +46,29 @@ void MainGui::draw() {
             ImVec2(canvas_pos.x + canvas_size.x,
                     canvas_pos.y + canvas_size.y),
             IM_COL32(255, 255, 255, 255));
+
+	 draw_list->AddRectFilled(canvas_pos,
+                                  ImVec2(canvas_pos.x + (canvas_size.x / 10),
+                                         canvas_pos.y + canvas_size.y),
+                                  IM_COL32(150, 150, 150, 255));
+	 
+	 draw_list->AddRectFilled(ImVec2(canvas_pos.x + 1, canvas_pos.y + 1),
+                                  ImVec2(canvas_pos.x + 100, canvas_pos.y + 25),
+                                  IM_COL32(100, 100, 100, 255));
+
+	 draw_list->AddText(ImVec2(canvas_pos.x + 25, canvas_pos.y + 5), IM_COL32(125, 225, 200, 255), "A");
+     
+	 for (int i = 0; i < 10; i++) {
+             int x = ((canvas_size.x / 10) * i) + canvas_pos.x;
+		 draw_list->AddLine(ImVec2(x, canvas_pos.y), ImVec2(x, canvas_pos.y + canvas_size.y), IM_COL32(255, 255, 255, 100));
+	 }
+
+	 for (int i = 0; i < 4; i++) {
+             int y = ((canvas_size.y / 4) * i) + canvas_pos.y;
+		draw_list->AddLine(ImVec2(canvas_pos.x, y),
+			ImVec2(canvas_pos.x + canvas_size.x, y),
+						IM_COL32(255, 255, 255, 100));
+	 }
 
 	//ImGui::Separator();
  //       {
