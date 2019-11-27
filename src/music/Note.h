@@ -17,6 +17,8 @@ class Note {
     Note(NoteType note_type, ofSoundPlayer *sound){};
     Note(NoteType note_type, ofSoundPlayer *sound, double duration){};
     void CalculateDuration(int bpm);
+    void ToRest() { sound_ = nullptr; }
+    void Play();
 
    private:
     NoteType note_type_;

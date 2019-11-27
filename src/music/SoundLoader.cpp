@@ -13,6 +13,7 @@ ofSoundPlayer* SoundLoader::GetSoundPlayer(std::string sound_name,
         return names_to_sound_players.at(sound_name);
     } else {
         ofSoundPlayer* sound_player = new ofSoundPlayer();
+        sound_player->setMultiPlay(true);
         sound_player->loadSound(file_path);
 
         names_to_sound_players.insert(

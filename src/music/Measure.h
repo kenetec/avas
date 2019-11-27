@@ -17,5 +17,5 @@ class Measure {
     void SetBPM(int bpm);
    private:
     TimeSignature time_signature_;
-    vector<Beat> beats_;
+    std::vector<Beat> beats_;
 };

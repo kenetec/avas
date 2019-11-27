@@ -11,10 +11,29 @@ class Score {
     Score(){};
     Score(int bpm) : bpm_(bpm){};
 
+	/*
+	Pushes measure into vector
+	*/
     void PushMeasure(Measure measure);
+
+	/*
+	Inserts measure into specific spot
+	*/
     void InsertMeasure(Measure measure, int index);
+
+	/*
+	Clears all notes in measure
+	*/
     void ClearMeasure(int index);
+
+	/*
+	Removes measure at specific index
+	*/
     void RemoveMeasure(int index);
+
+	/*
+	Sets BPM of score, recalculates duration of notes
+	*/
     void SetBPM(int bpm);
 
    private:

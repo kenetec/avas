@@ -12,6 +12,8 @@ class Beat {
     */
     void Insert(Note note, int index);
     void SetBPM(int bpm);
+    void SetSubdivisions(int subdivisions);
+    void ToRest(){};
 
    private:
     int subdivisions_;

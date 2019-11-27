@@ -13,7 +13,13 @@ void Beat::Insert(Note note, int index) {
 }
 
 void Beat::SetBPM(int bpm) {
-    for (Note note : notes_) {
-        note.CalculateDuration(bpm);
+    for (int i = 0; i < subdivisions_; i++) {
+        //notes_[i].CalculateDuration(bpm);
     }
+}
+
+void Beat::SetSubdivisions(int subdivisions) {
+    subdivisions_ = subdivisions;
+    delete notes_;
+    notes_ = new Note[subdivisions];
 }
