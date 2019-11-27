@@ -2,6 +2,7 @@
 
 #include <ofMain.h>
 #include "ofxImGui.h"
+#include "PianoRoll.h"
 
 class MainGui {
    public:
@@ -12,6 +13,6 @@ class MainGui {
     void draw();
 
    private:
-    ofxImGui::Gui gui;
+    //PianoRoll piano_roll_;
     bool active;
 };
