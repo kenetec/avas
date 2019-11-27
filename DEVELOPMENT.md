@@ -12,3 +12,6 @@
 ### 11/25/19
 - Created Visualizer class and refactored code.
 - Got testing to work with Catch2.
+### 11/26/19
+- Extensively combed through imgui.h to get an idea of how API works (there is no dedicated documentation -_-).
+- Organized files into folders.
