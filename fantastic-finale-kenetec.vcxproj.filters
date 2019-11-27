@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="src\ofApp.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="src\main.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Beat.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\gui\MainGui.cpp">
@@ -16,16 +10,7 @@
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Measure.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Note.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="src\ofApp.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Score.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxGui\src\ofxBaseGui.cpp">
@@ -94,17 +79,35 @@
     <ClCompile Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxImGui\libs\imgui\src\imgui_widgets.cpp">
       <Filter>addons\ofxImGui\libs\imgui\src</Filter>
     </ClCompile>
-    <ClCompile Include="src\SoundLoader.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="src\visualizer\Visualizer.cpp">
       <Filter>src\visualizer</Filter>
     </ClCompile>
     <ClCompile Include="tests\main.cpp">
       <Filter>tests</Filter>
     </ClCompile>
-    <ClCompile Include="SoundLoaderTest.cpp">
+    <ClCompile Include="src\gui\PianoRoll.cpp">
+      <Filter>src\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\SoundLoaderTest.cpp">
       <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="src\music\Beat.cpp">
+      <Filter>src\music</Filter>
+    </ClCompile>
+    <ClCompile Include="src\music\Measure.cpp">
+      <Filter>src\music</Filter>
+    </ClCompile>
+    <ClCompile Include="src\music\Note.cpp">
+      <Filter>src\music</Filter>
+    </ClCompile>
+    <ClCompile Include="src\music\Score.cpp">
+      <Filter>src\music</Filter>
+    </ClCompile>
+    <ClCompile Include="src\music\SoundLoader.cpp">
+      <Filter>src\music</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofApp.cpp">
+      <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -150,27 +153,15 @@
     <Filter Include="tests">
       <UniqueIdentifier>{3a083d9c-0f65-4a8b-9d05-05e0856e5aed}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\music">
+      <UniqueIdentifier>{b779927a-1a39-418d-998c-ebe37e4a1b98}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\ofApp.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Beat.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="src\gui\MainGui.h">
       <Filter>src\gui</Filter>
     </ClInclude>
-    <ClInclude Include="src\Measure.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Note.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="src\ofApp.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Score.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxGui\src\ofxBaseGui.h">
@@ -257,11 +248,29 @@
     <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxUnitTests\src\ofxUnitTests.h">
       <Filter>addons\ofxUnitTests\src</Filter>
     </ClInclude>
-    <ClInclude Include="src\SoundLoader.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="src\visualizer\Visualizer.h">
       <Filter>src\visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gui\PianoRoll.h">
+      <Filter>src\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\music\Beat.h">
+      <Filter>src\music</Filter>
+    </ClInclude>
+    <ClInclude Include="src\music\Measure.h">
+      <Filter>src\music</Filter>
+    </ClInclude>
+    <ClInclude Include="src\music\Note.h">
+      <Filter>src\music</Filter>
+    </ClInclude>
+    <ClInclude Include="src\music\Score.h">
+      <Filter>src\music</Filter>
+    </ClInclude>
+    <ClInclude Include="src\music\SoundLoader.h">
+      <Filter>src\music</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofApp.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

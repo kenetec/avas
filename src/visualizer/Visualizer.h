@@ -7,6 +7,7 @@ class Visualizer {
     void setup();
     void update();
     void draw();
+    void DrawBasic2D();
 
    private:
     /*
@@ -14,5 +15,6 @@ class Visualizer {
 	https://www.youtube.com/watch?v=IiTsE7P-GDs&list=PL4neAtv21WOmrV8z9rSzL20QpdLU1zJLr&index=37&t=481s
 	*/
     float *fftSmooth_;
-    int bands_;
+    float kFFTSmoothFactor = 0.9f;
+    int kBands = 128;
 };

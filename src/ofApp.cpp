@@ -8,8 +8,11 @@ void ofApp::setup() {
     ofSetWindowTitle("AVAS");
     ofSoundStreamSetup(kDefaultOutputStreams, kDefaultInputStreams);
 
+	gui_.setup();
+
     main_gui_.setup();
     visualizer_.setup();
+    piano_roll_.setup();
 
     volume = 0;
     sound_player.loadSound(
@@ -29,8 +32,49 @@ void ofApp::update() {
 }
 
 void ofApp::draw() {
+    visualizer_.DrawBasic2D();
+
+	gui_.begin();
+
+	// put all gui calls in here  
     main_gui_.draw();
-    visualizer_.draw();
+	piano_roll_.draw();
+
+	ImGui::SetNextWindowPos(ImVec2(400, 300));
+	ImGui::Begin("Hello", NULL);
+	ImGui::Text("Hello World!");
+        ImGui::End();
+
+	gui_.end();
+
+	//float clearAlpha = 100;
+ //   ofSetColor(255, clearAlpha);
+ //   ofSetRectMode(OF_RECTMODE_CORNER);
+ //   ofFill();
+ //   ofDrawRectangle(0, 0, ofGetWidth(),
+ //                   ofGetHeight());  // ofBackground doesn't work with alpha, so
+ //                                    // draw a transparent rect
+
+ //   ofSetRectMode(OF_RECTMODE_CENTER);
+ //   ofSetColor(0);
+ //   ofNoFill();
+ //   ofPushMatrix();
+ //   ofTranslate(ofGetWidth() / 2,
+ //               ofGetHeight() / 2);  // Translate to the center of the screen
+ //   for (int i = 0; i < 100; i++) {
+ //       ofScale(1.1, 1.1);
+ //       // Noise is a topic that deserves a section in a book unto itself
+ //       // Check out Section 1.6 of "The Nature of Code" for a good explanation
+ //       // http://natureofcode.com/book/introduction/
+ //       float time = ofGetElapsedTimef();
+ //       float timeScale = 0.5;
+ //       float noise = ofSignedNoise(time * timeScale) * 20.0;
+ //       ofRotate(noise);
+ //       ofDrawRectangle(0, 0, 50, 50);
+ //   }
+ //   ofPopMatrix();
+
+
 }
 
 void ofApp::audioOut(ofSoundBuffer& out_buffer) {}

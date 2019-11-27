@@ -2,8 +2,10 @@
 
 #include <ofMain.h>
 #include <map>
+#include <ofxImGui.h>
 
 #include "gui/MainGui.h"
+#include "gui/PianoRoll.h"
 #include "visualizer/Visualizer.h"
 
 /*
@@ -23,8 +25,11 @@ private:
     int kDefaultOutputStreams = 3; // 3 output streams for stereo/bluetooth
     int kDefaultInputStreams = 0;
 
+	ofxImGui::Gui gui_;
+
 	MainGui main_gui_;
     Visualizer visualizer_;
+    PianoRoll piano_roll_;
 
 	ofSoundPlayer sound_player;
 	ofSoundPlayer sound_player_2;
