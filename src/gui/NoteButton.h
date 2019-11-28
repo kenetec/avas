@@ -3,7 +3,11 @@
 #include <ofMain.h>
 #include <ofxImGui.h>
 
+#include "PianoRoll.h"
 #include "../music/Beat.h"
+
+// forward declarations
+struct PianoRollCanvas;
 
 class NoteButton {
    private:
@@ -14,7 +18,7 @@ class NoteButton {
 
    public:
     NoteButton(std::string note, ImU32 active_color) : note_(note), active_color_(active_color){};
-    void draw(ImVec2 size, ImU32 color);
+    void draw(PianoRollCanvas& piano_roll, ImVec2 start_pos, ImVec2 size, ImU32 default_color);
     void SetActive(bool active) { active_ = active; };
-    bool GetActive() { return active_; };
+    bool IsActive() { return active_; };
 };

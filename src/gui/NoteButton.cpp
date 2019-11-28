@@ -1,17 +1,10 @@
 #include "NoteButton.h"
 
-void NoteButton::draw(ImVec2 size, ImU32 color) {
-    if (active_) {
-        ImGui::PushStyleColor(ImGuiCol_Button, active_color_);
-    } else {
-        ImGui::PushStyleColor(ImGuiCol_Button, color);
-    }
+void NoteButton::draw(PianoRollCanvas& canvas, ImVec2 start_pos, ImVec2 size, ImU32 default_color) {
+	ImU32 draw_color = active_ ? active_color_ : default_color;
+	canvas.draw_list->AddRectFilled(start_pos, start_pos + size, draw_color);
 
-    if (ImGui::Button("", size)) {
+    if (ImGui::InvisibleButton(note_.c_str(), size)) {
         active_ = !active_;
-
-		std::cout << "clicked " << note_ << std::endl;
     }
-
-    ImGui::PopStyleColor();
 }

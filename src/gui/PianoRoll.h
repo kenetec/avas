@@ -5,35 +5,36 @@
 #include <math.h>
 #include "NoteButton.h"
 
+// forward declarations
+class NoteButton;
+
+const std::vector<std::string> kNoteNames {"C",     "C#/Db", "D",     "D#/Eb",
+                                       "E",     "F",     "F#/Gb", "G",
+                                       "G#/Ab", "A",     "A#/Bb", "B"};
+
+struct PianoRollCanvas {
+    ImVec2 pos;
+    ImVec2 size;
+    ImVec2 end_pos;
+    ImDrawList* draw_list;
+};
+
 class PianoRoll {
    private:
     bool window_active_;
 
-    ImVec2 canvas_pos_;
-    ImVec2 canvas_size_;
-    ImVec2 canvas_end_pos_;
-    ImDrawList* draw_list_;
+	PianoRollCanvas canvas_;
 
-    int kNumOfCols = 17; // 4 beats * 4 bars + 1 extra for note names
-    int kNumOfRows = 13;  // 12 notes + 1 extra for timestamps
+    const int kNumOfCols = 17; // 4 beats * 4 bars + 1 extra for note names
+    const int kNumOfRows = 13;  // 12 notes + 1 extra for timestamps
     int vertical_divider_x_offset_;
     int horizontal_divider_y_offset_;
     int kNoteNamesIndexOffset = kNumOfRows - 12; // 12 notes
 
-	std::vector<std::string> kNoteNames = {
-		"C", "C#/Db", 
-		"D", "D#/Eb",
-		"E",
-		"F", "F#/Gb",
-		"G", "G#/Ab",
-		"A", "A#/Bb",
-		"B"
-	};
-
-	std::vector<std::vector<NoteButton>> note_buttons_;
+	std::vector<std::vector<NoteButton*>> note_buttons_;
 
    public:
-    PianoRoll(){};
+     PianoRoll();
 	~PianoRoll();
 
     void setup();
