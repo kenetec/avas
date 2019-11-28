@@ -4,9 +4,6 @@
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\gui\MainGui.cpp">
-      <Filter>src\gui</Filter>
-    </ClCompile>
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -112,7 +109,13 @@
     <ClCompile Include="src\gui\NoteButton.cpp">
       <Filter>src\gui</Filter>
     </ClCompile>
-    <ClCompile Include="src\gui\Gui.cpp">
+    <ClCompile Include="src\gui\MainMenuBar.cpp">
+      <Filter>src\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gui\Composer.cpp">
+      <Filter>src\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gui\GuiDrawer.cpp">
       <Filter>src\gui</Filter>
     </ClCompile>
   </ItemGroup>
@@ -167,9 +170,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\gui\MainGui.h">
-      <Filter>src\gui</Filter>
-    </ClInclude>
     <ClInclude Include="src\ofApp.h">
       <Filter>src</Filter>
     </ClInclude>
@@ -284,7 +284,16 @@
     <ClInclude Include="src\gui\NoteButton.h">
       <Filter>src\gui</Filter>
     </ClInclude>
-    <ClInclude Include="src\gui\Gui.h">
+    <ClInclude Include="src\gui\MainMenuBar.h">
+      <Filter>src\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gui\Composer.h">
+      <Filter>src\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gui\GuiDrawer.h">
+      <Filter>src\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gui\GuiWindow.h">
       <Filter>src\gui</Filter>
     </ClInclude>
   </ItemGroup>

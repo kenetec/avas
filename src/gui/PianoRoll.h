@@ -3,6 +3,7 @@
 #include <ofxImGui.h>
 #include <vector>
 #include <math.h>
+#include "GuiWindow.h"
 #include "NoteButton.h"
 
 // forward declarations
@@ -19,10 +20,8 @@ struct PianoRollCanvas {
     ImDrawList* draw_list;
 };
 
-class PianoRoll {
+class PianoRoll : public GuiWindow {
    private:
-    bool window_active_;
-
 	PianoRollCanvas canvas_;
 
     const int kNumOfCols = 17; // 4 beats * 4 bars + 1 extra for note names
@@ -37,8 +36,8 @@ class PianoRoll {
      PianoRoll();
 	~PianoRoll();
 
-    void setup();
-    void draw();
+    void setup() override;
+    void draw() override;
 
    private:
     void DrawBackground();

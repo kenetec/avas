@@ -8,9 +8,9 @@ void ofApp::setup() {
     ofSetWindowTitle("AVAS");
     ofSoundStreamSetup(kDefaultOutputStreams, kDefaultInputStreams);
 
-	gui_.setup();
-    main_gui_.setup();
-        piano_roll_.setup();
+	imgui_.setup();
+    gui_drawer_.setup();
+    main_menu_bar_.setup(gui_drawer_);
     visualizer_.setup();
 
     volume = 0;
@@ -33,13 +33,13 @@ void ofApp::update() {
 void ofApp::draw() {
     visualizer_.DrawBasic2D();
 
-	gui_.begin();
+	imgui_.begin();
 
-    main_gui_.draw();
-    piano_roll_.draw();
+	main_menu_bar_.draw();
+    gui_drawer_.draw();
     //ImGui::ShowDemoWindow();
 
-    gui_.end();
+    imgui_.end();
 
 	//float clearAlpha = 100;
  //   ofSetColor(255, clearAlpha);

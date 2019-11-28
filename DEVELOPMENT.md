@@ -23,3 +23,5 @@
 - Started gui integration with music structure.
 ### 11/28/19
 - Add some refinements to piano roll.
+- Created main menu bar.
+- Created GuiDrawer to streamline window drawing.
