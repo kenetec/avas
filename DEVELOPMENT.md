@@ -19,4 +19,5 @@
 
 # Week 3
 ### 11/27/19
-- Centralized GUI
+- Create basic piano roll interface
+- Started gui integration with music structure

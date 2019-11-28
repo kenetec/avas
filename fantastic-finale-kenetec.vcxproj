@@ -183,6 +183,7 @@
     <ClCompile Include="src\gui\Gui.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="src\gui\NoteButton.cpp" />
     <ClCompile Include="src\gui\PianoRoll.cpp" />
     <ClCompile Include="src\main.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -228,6 +229,7 @@
     <ClInclude Include="src\gui\Gui.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="src\gui\NoteButton.h" />
     <ClInclude Include="src\gui\PianoRoll.h" />
     <ClInclude Include="src\gui\MainGui.h" />
     <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxGui\src\ofxBaseGui.h" />
