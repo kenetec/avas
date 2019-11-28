@@ -1,15 +1,28 @@
 #include "PianoRoll.h"
 
-PianoRoll::~PianoRoll() {}
+PianoRoll::~PianoRoll() {
+    /*for (int i = 0; i < note_buttons_.size(); i++) {
+        std::vector<NoteButton*> row = note_buttons_.at(i);
+        for (int j = 0; j < row.size(); j++) {
+            delete row.at(j);
+        }
+    }*/
+}
 
 void PianoRoll::setup() {
     window_active_ = true;
 
+    // populate note_buttons_
     for (int i = 1; i < kNumOfRows; i++) {
+        std::vector<NoteButton> row;
+
         for (int j = 1; j < kNumOfCols; j++) {
-            //NoteButton nb(kNoteNames.at(j - 1), ImVec4(150, 150, 150, 255));
-            //note_buttons_.push_back(nb);
+            NoteButton nb(kNoteNames.at((int)i - 1),
+                                            IM_COL32(90, 90, 150, 255));
+            row.push_back(nb);
         }
+
+        note_buttons_.push_back(row);
     }
 }
 
@@ -33,9 +46,9 @@ void PianoRoll::draw() {
             ((canvas_end_pos_.y - canvas_pos_.y) / kNumOfRows);
     }
 
-	//ImGui::PushStyleColor(0, ImVec4(200, 25, 100, 255));
- //   ImGui::Button("button", ImVec2(50, 25));
- //       ImGui::PopStyleColor();
+    // ImGui::PushStyleColor(0, ImVec4(200, 25, 100, 255));
+    //   ImGui::Button("button", ImVec2(50, 25));
+    //       ImGui::PopStyleColor();
 
     {  // draw
         DrawBackground();
@@ -62,7 +75,7 @@ void PianoRoll::DrawBackground() {
 
     // border
     draw_list_->AddRect(canvas_pos_, canvas_end_pos_,
-                       IM_COL32(255, 255, 255, 255));
+                        IM_COL32(255, 255, 255, 255));
 }
 
 void PianoRoll::DrawDividingLines() {
@@ -87,11 +100,13 @@ void PianoRoll::DrawDividingLines() {
 
 void PianoRoll::DrawNoteNames() {
     for (int row = kNoteNamesIndexOffset; row < kNumOfRows; row++) {
-        ImVec2 pos =
-            ImVec2(vertical_divider_x_offset_ * .10, horizontal_divider_y_offset_ * (row)) + canvas_pos_;
+        ImVec2 pos = ImVec2(vertical_divider_x_offset_ * .10,
+                            horizontal_divider_y_offset_ * (row)) +
+                     canvas_pos_;
 
-        draw_list_->AddText(pos, IM_COL32(255, 255, 255, 255),
-                           kNoteNames[(int) row - kNoteNamesIndexOffset].c_str());
+        draw_list_->AddText(
+            pos, IM_COL32(255, 255, 255, 255),
+            kNoteNames[(int)row - kNoteNamesIndexOffset].c_str());
     }
 }
 
@@ -102,7 +117,8 @@ void PianoRoll::DrawTimestamps() {
                             horizontal_divider_y_offset_ * 0.10) +
                      canvas_pos_;
 
-        sprintf_s(buffer, sizeof(buffer), "%d.%d", (int) floor((col - 1) / 4) + 1, ((col - 1) % 4) + 1);
+        sprintf_s(buffer, sizeof(buffer), "%d.%d",
+                  (int)floor((col - 1) / 4) + 1, ((col - 1) % 4) + 1);
         draw_list_->AddText(pos, IM_COL32(255, 255, 255, 255), buffer);
     }
 }
@@ -118,18 +134,24 @@ void PianoRoll::DrawNoteButtons() {
 
             ImGui::SetCursorScreenPos(canvas_pos_ + start_pos + ImVec2(1, 1));
 
-			ImVec4 color;
-			if (col % 2 == 0) {
-				color = ImVec4(200, 0, 200, 255);
+            ImU32 color;
+            if (col % 2 == 0) {
+                color = IM_COL32(60, 60, 65, 255);
             } else {
-                color = ImVec4(150, 150, 150, 255);
+                color = IM_COL32(50, 50, 55, 255);
             }
 
-            ImGui::PushStyleColor(0, color);
+			ImGui::PushStyleColor(ImGuiCol_Button, color);
 
-            ImGui::Button("", size);
+			if (ImGui::Button("", size)) {
+                std::cout << "clicked " << kNoteNames.at((int)row-1) << std::endl;
+            }
 
-            ImGui::PopStyleColor();
+			ImGui::PopStyleColor();
+
+            /*std::vector<NoteButton> row_vec = note_buttons_.at((int)row - 1);
+            NoteButton nb = row_vec.at((int)col - 1);
+            nb.draw(size, color);*/
         }
     }
 }

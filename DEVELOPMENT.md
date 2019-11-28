@@ -19,5 +19,7 @@
 
 # Week 3
 ### 11/27/19
-- Create basic piano roll interface
-- Started gui integration with music structure
+- Create basic piano roll interface.
+- Started gui integration with music structure.
+### 11/28/19
+- Add some refinements to piano roll.

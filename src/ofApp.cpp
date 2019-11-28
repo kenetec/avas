@@ -37,6 +37,7 @@ void ofApp::draw() {
 
     main_gui_.draw();
     piano_roll_.draw();
+    //ImGui::ShowDemoWindow();
 
     gui_.end();
 

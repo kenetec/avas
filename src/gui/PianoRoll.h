@@ -30,7 +30,7 @@ class PianoRoll {
 		"B"
 	};
 
-	std::vector<NoteButton> note_buttons_;
+	std::vector<std::vector<NoteButton>> note_buttons_;
 
    public:
     PianoRoll(){};
