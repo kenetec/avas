@@ -1,10 +1,13 @@
 #include "GuiDrawer.h"
 
 GuiDrawer::GuiDrawer() {
+    PianoRoll* piano_roll = new PianoRoll();
+    Composer* composer = new Composer(piano_roll);
+
     windows.insert(
-        std::pair<std::string, GuiWindow*>("PianoRoll", new PianoRoll()));
+        std::pair<std::string, GuiWindow*>("PianoRoll", piano_roll));
     windows.insert(
-        std::pair<std::string, GuiWindow*>("Composer", new Composer()));
+        std::pair<std::string, GuiWindow*>("Composer", composer));
 }
 
 GuiDrawer::~GuiDrawer() {
