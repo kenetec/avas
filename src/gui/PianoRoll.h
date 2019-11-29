@@ -22,7 +22,7 @@ class PianoRoll : public GuiWindow {
     int horizontal_divider_y_offset_;
     int kNoteNamesIndexOffset = kNumOfRows - 12;  // 12 notes
 
-    std::vector<std::vector<NoteButton*>> note_buttons_;
+    std::vector<std::vector<NoteButton>> note_buttons_;
 
    public:
     PianoRoll();

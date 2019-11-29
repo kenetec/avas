@@ -3,12 +3,12 @@
 PianoRoll::PianoRoll() {}
 
 PianoRoll::~PianoRoll() {
-    for (int i = 0; i < note_buttons_.size(); i++) {
+    /*for (int i = 0; i < note_buttons_.size(); i++) {
         std::vector<NoteButton*> row = note_buttons_.at(i);
         for (int j = 0; j < row.size(); j++) {
             delete row.at(j);
         }
-    }
+    }*/
 }
 
 void PianoRoll::setup() {
@@ -19,7 +19,7 @@ void PianoRoll::setup() {
 	// populate note_buttons_
     char buffer[100];
     for (int i = 1; i < kNumOfRows; i++) {
-        std::vector<NoteButton*> row;
+        std::vector<NoteButton> row;
 
 		int note_index = i - 1;
 
@@ -27,7 +27,7 @@ void PianoRoll::setup() {
             sprintf_s(buffer, sizeof(buffer), "%d.%d",
                               note_index, j-1);
 
-            NoteButton* nb = new NoteButton(buffer, i - 1, j - 1,
+            NoteButton nb = NoteButton(buffer, i - 1, j - 1,
                           IM_COL32(90, 90, 150, 255));
 
             row.push_back(nb);
@@ -161,8 +161,8 @@ void PianoRoll::DrawNoteButtons() {
                 color = IM_COL32(50, 50, 55, 255);
             };
 
-            std::vector<NoteButton*> row_vec = note_buttons_.at((int)row - 1);
-            NoteButton* nb = row_vec.at((int)col - 1);
+            std::vector<NoteButton>* row_vec = &note_buttons_.at((int)row - 1);
+            NoteButton* nb = &row_vec->at((int)col - 1);
             nb->draw(canvas_, cursor_pos, size, color);
         }
     }

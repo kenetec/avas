@@ -25,3 +25,5 @@
 - Add some refinements to piano roll.
 - Created main menu bar.
 - Created GuiDrawer to streamline window drawing.
+### 11/29/19
+- Squash bugs
