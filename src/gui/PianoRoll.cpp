@@ -1,8 +1,6 @@
 #include "PianoRoll.h"
 
-PianoRoll::PianoRoll() {
-    
-}
+PianoRoll::PianoRoll() {}
 
 PianoRoll::~PianoRoll() {
     for (int i = 0; i < note_buttons_.size(); i++) {
@@ -16,6 +14,8 @@ PianoRoll::~PianoRoll() {
 void PianoRoll::setup() {
     window_active_ = true;
 
+	// sprintf_s usage from:
+    // https://stackoverflow.com/questions/28963520/sprintf-command-doesnt-work
 	// populate note_buttons_
     char buffer[100];
     for (int i = 1; i < kNumOfRows; i++) {
@@ -26,8 +26,10 @@ void PianoRoll::setup() {
         for (int j = 1; j < kNumOfCols; j++) {
             sprintf_s(buffer, sizeof(buffer), "%d.%d",
                               note_index, j-1);
-            NoteButton* nb = new NoteButton(buffer,
+
+            NoteButton* nb = new NoteButton(buffer, i - 1, j - 1,
                           IM_COL32(90, 90, 150, 255));
+
             row.push_back(nb);
         }
 
@@ -55,10 +57,6 @@ void PianoRoll::draw() {
             ((canvas_.end_pos.y - canvas_.pos.y) / kNumOfRows);
     }
 
-    // ImGui::PushStyleColor(0, ImVec4(200, 25, 100, 255));
-    //   ImGui::Button("button", ImVec2(50, 25));
-    //       ImGui::PopStyleColor();
-
     {  // draw
         DrawBackground();
         DrawDividingLines();
@@ -70,6 +68,18 @@ void PianoRoll::draw() {
     canvas_.draw_list->PushClipRect(canvas_.pos, canvas_.end_pos);
 
     ImGui::End();
+}
+
+void PianoRoll::LoadMeasure(Measure& measure) {
+    /*for (int beat_index = 0; beat_index < measure.GetTimeSignature().beats_per_measure; beat_index++) {
+        Beat beat = measure.GetBeat(beat_index);
+		
+		for (int note_index = 0; note_index < Beat::kMaxNotesPerDivision;
+             note_index++) {
+            NoteButton* nb = note_buttons_.at(beat_index).at(note_index);
+            nb->SetBeat(beat);
+        }
+    }*/
 }
 
 /*

@@ -2,27 +2,31 @@
 
 #include <ofMain.h>
 #include <ofxImGui.h>
-
-#include "PianoRoll.h"
 #include "../music/Beat.h"
-
-// forward declarations
-struct PianoRollCanvas;
+#include "Canvas.h"
 
 class NoteButton {
    private:
-    Beat beat_;
+    Beat* beat_;
     bool active_ = false;
-    std::string note_;
+    std::string note_name_;
     ImU32 active_color_;
+    int row_;
+    int col_;
 
    public:
-    NoteButton(std::string note, ImU32 active_color) : note_(note), active_color_(active_color){};
+    NoteButton(std::string note_name, int row, int col, ImU32 active_color)
+        : note_name_(note_name),
+          row_(row),
+          col_(col),
+          active_color_(active_color) {
+        beat_ = nullptr;
+    };
 
-    void draw(PianoRollCanvas& piano_roll, ImVec2 start_pos, ImVec2 size, ImU32 default_color);
+    void draw(Canvas& piano_roll_canvas, ImVec2 start_pos, ImVec2 size, ImU32 default_color);
 
-    void SetBeat(Beat& beat) { beat_ = beat; };
-    Beat& GetBeat() { return beat_; };
+    void SetBeat(Beat& beat);
+    Note& GetNote() { return beat_->GetNote(0, row_); };
     void SetActive(bool active) { active_ = active; };
     bool IsActive() { return active_; };
 };
