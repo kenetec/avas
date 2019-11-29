@@ -182,6 +182,7 @@
   <ItemGroup>
     <ClCompile Include="src\gui\Composer.cpp" />
     <ClCompile Include="src\gui\GuiDrawer.cpp" />
+    <ClCompile Include="src\gui\MeasureButton.cpp" />
     <ClCompile Include="src\gui\NoteButton.cpp" />
     <ClCompile Include="src\gui\PianoRoll.cpp" />
     <ClCompile Include="src\main.cpp">
@@ -227,9 +228,11 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\gui\Canvas.h" />
     <ClInclude Include="src\gui\Composer.h" />
     <ClInclude Include="src\gui\GuiDrawer.h" />
     <ClInclude Include="src\gui\GuiWindow.h" />
+    <ClInclude Include="src\gui\MeasureButton.h" />
     <ClInclude Include="src\gui\NoteButton.h" />
     <ClInclude Include="src\gui\PianoRoll.h" />
     <ClInclude Include="src\gui\MainMenuBar.h" />

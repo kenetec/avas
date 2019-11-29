@@ -19,10 +19,13 @@ class Note {
     void CalculateDuration(int bpm);
     void ToRest() { sound_ = nullptr; }
     void Play();
+    void SetActive(bool active) {active_ = active;};
+    bool GetActive() { return active_; };
 
    private:
     NoteType note_type_;
     // Points to sound loaded in SoundLoader
     ofSoundPlayer *sound_;
     double duration_;
+    bool active_ = false;
 };

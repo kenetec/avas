@@ -118,6 +118,9 @@
     <ClCompile Include="src\gui\GuiDrawer.cpp">
       <Filter>src\gui</Filter>
     </ClCompile>
+    <ClCompile Include="src\gui\MeasureButton.cpp">
+      <Filter>src\gui</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -294,6 +297,12 @@
       <Filter>src\gui</Filter>
     </ClInclude>
     <ClInclude Include="src\gui\GuiWindow.h">
+      <Filter>src\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gui\Canvas.h">
+      <Filter>src\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gui\MeasureButton.h">
       <Filter>src\gui</Filter>
     </ClInclude>
   </ItemGroup>

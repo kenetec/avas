@@ -1,8 +1,7 @@
 #pragma once
 
-#include "ofMain.h"
-#include "Beat.h"
 #include <vector>
+#include "Beat.h"
 
 struct TimeSignature {
     int beats_per_measure;
@@ -11,10 +10,16 @@ struct TimeSignature {
 
 class Measure {
    public:
+    Measure() : Measure(TimeSignature{4, NoteType::QUARTER}){};
     Measure(TimeSignature time_signature);
-    Beat* GetBeat(int index);
+    ~Measure();
+
+    void SetTimeSignature(TimeSignature time_signature);
+    Beat& GetBeat(int index);
     void Clear();
     void SetBPM(int bpm);
+    TimeSignature GetTimeSignature() { return time_signature_; };
+
    private:
     TimeSignature time_signature_;
     std::vector<Beat> beats_;

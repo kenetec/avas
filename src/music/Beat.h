@@ -4,18 +4,27 @@
 
 class Beat {
    public:
-    Beat(){};
+    Beat() : Beat(1) {};
     Beat(int subdivisions);
+
+	//Beat& operator=(const Beat& other){};
 
     /*
             Inserts note at specified index
     */
-    void Insert(Note note, int index);
+    void Insert(Note& note, int subdivision, int index);
+    Note& GetNote(int subdivision, int index);
     void SetBPM(int bpm);
     void SetSubdivisions(int subdivisions);
     void ToRest(){};
+   std::vector<std::vector<Note>>& GetNotes() { return notes_; };
+    void SetNoteActive(int subdivision, int index, bool value);
+    void ToggleNoteActive(int subdivision, int index);
+
+	static const int kMaxNotesPerDivision = 12;
 
    private:
     int subdivisions_;
-    Note *notes_;
+    std::vector<std::vector<Note>> notes_;
+  
 };
