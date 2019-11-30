@@ -16,6 +16,7 @@ class Beat {
     Note& GetNote(int subdivision, int index);
     void SetBPM(int bpm);
     void SetSubdivisions(int subdivisions);
+    int GetSubdivisions() { return subdivisions_; }
     void ToRest(){};
    std::vector<std::vector<Note>>& GetNotes() { return notes_; };
     void SetNoteActive(int subdivision, int index, bool value);

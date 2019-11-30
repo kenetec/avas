@@ -11,19 +11,19 @@ GuiDrawer::GuiDrawer() {
 }
 
 GuiDrawer::~GuiDrawer() {
-    for (auto it = windows.cbegin(); it != windows.cend(); it++) {
+    for (auto it = windows.begin(); it != windows.end(); it++) {
         delete it->second;
     }
 }
 
 void GuiDrawer::setup() {
-    for (auto it = windows.cbegin(); it != windows.cend(); it++) {
+    for (auto it = windows.begin(); it != windows.end(); it++) {
         it->second->setup();
     }
 }
 
 void GuiDrawer::draw() {
-    for (auto it = windows.cbegin(); it != windows.cend(); it++) {
+    for (auto it = windows.begin(); it != windows.end(); it++) {
         GuiWindow* window = it->second;
         if (window->IsWindowActive()) {
 			window->draw();

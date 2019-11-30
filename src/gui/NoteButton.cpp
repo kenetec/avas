@@ -15,7 +15,7 @@ void NoteButton::draw(Canvas& piano_roll_canvas, ImVec2 start_pos, ImVec2 size,
     }
 }
 
-void NoteButton::SetBeat(Beat& beat) {
-    beat_ = &beat;
-    active_ = beat.GetNote(0, row_).GetActive();
+void NoteButton::SetBeat(Beat* beat) {
+    beat_ = beat;
+    active_ = beat_->GetNote(0, row_).GetActive();
 }

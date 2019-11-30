@@ -12,12 +12,12 @@ class Composer : public GuiWindow {
     const int kNumOfCol = 5;
 
 	Canvas canvas_;
+    PianoRoll* piano_roll_;
 
 	int vertical_divider_x_offset;
     int horizontal_divider_y_offset;
 
-	std::vector<std::vector<MeasureButton*>> measure_buttons_;
-    PianoRoll* piano_roll_;
+	std::vector<std::vector<MeasureButton>> measure_buttons_;
    public:
     Composer(PianoRoll* piano_roll) : piano_roll_(piano_roll){};
     ~Composer();

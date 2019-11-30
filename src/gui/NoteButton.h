@@ -25,7 +25,7 @@ class NoteButton {
 
     void draw(Canvas& piano_roll_canvas, ImVec2 start_pos, ImVec2 size, ImU32 default_color);
 
-    void SetBeat(Beat& beat);
+    void SetBeat(Beat* beat);
     Note& GetNote() { return beat_->GetNote(0, row_); };
     void SetActive(bool active) { active_ = active; };
     bool IsActive() { return active_; };

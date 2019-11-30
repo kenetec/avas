@@ -1,11 +1,11 @@
 #include "Composer.h"
 
 Composer::~Composer() {
-    for (int row = 0; row < kNumOfRows; row++) {
+    /*for (int row = 0; row < kNumOfRows; row++) {
         for (int col = 1; col < kNumOfCol; col++) {
             delete measure_buttons_.at(row).at((int)col-1);
         }
-    }
+    }*/
 }
 
 void Composer::setup() {
@@ -15,11 +15,11 @@ void Composer::setup() {
     // populate measures
     char buffer[100];
     for (int row = 0; row < kNumOfRows; row++) {
-        std::vector<MeasureButton*> row_vec;
+        std::vector<MeasureButton> row_vec;
         for (int col = 1; col < kNumOfCol; col++) {
             sprintf_s(buffer, sizeof(buffer), "%d.%d", row, col);
 
-            row_vec.push_back(new MeasureButton(piano_roll_, buffer));
+            row_vec.push_back(MeasureButton(piano_roll_, buffer));
         }
         measure_buttons_.push_back(row_vec);
     }
@@ -120,8 +120,8 @@ void Composer::DrawMeasures() {
 			ImVec2 cursor_pos = canvas_.pos + start_pos + ImVec2(1, 1);
             ImGui::SetCursorScreenPos(cursor_pos);
             
-			std::vector<MeasureButton*> row_vec = measure_buttons_.at(row);
-            MeasureButton* measure_button = row_vec.at((int)col - 1);
+			std::vector<MeasureButton>* row_vec = &measure_buttons_.at(row);
+            MeasureButton* measure_button = &row_vec->at((int)col - 1);
             measure_button->draw(canvas_, cursor_pos, size);
         }
     }

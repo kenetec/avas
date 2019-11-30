@@ -14,10 +14,12 @@ class Measure {
     Measure(TimeSignature time_signature);
     ~Measure();
 
-    void SetTimeSignature(TimeSignature time_signature);
-    Beat& GetBeat(int index);
     void Clear();
+
     void SetBPM(int bpm);
+    std::vector<Beat>& GetBeats() { return beats_; };
+    Beat& GetBeat(int index);
+    void SetTimeSignature(TimeSignature time_signature);
     TimeSignature GetTimeSignature() { return time_signature_; };
 
    private:
