@@ -28,3 +28,7 @@
 ### 11/29/19
 - Squash bugs.
 - Rewrote PianoRoll to scale dynamically.
+### 11/30/19
+- Composer returns all measures.
+- "Play" menu item in MainMenuBar.
+- Added overloading functions to GuiDrawer.

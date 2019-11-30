@@ -17,16 +17,29 @@ void MainMenuBar::draw() {
             ImGui::EndMenu();
         }
 
-		if (ImGui::BeginMenu("View")) {
-			if (ImGui::MenuItem("Composer")) {
-				gui_drawer_.SetWindowActive(std::string("Composer"), !gui_drawer_.IsWindowActive(std::string("Composer")));
-			}
+        if (ImGui::BeginMenu("View")) {
+            if (ImGui::MenuItem("Composer")) {
+                gui_drawer_.ToggleWindow("Composer");
+            }
             if (ImGui::MenuItem("Piano Roll")) {
-				gui_drawer_.SetWindowActive(std::string("PianoRoll"), !gui_drawer_.IsWindowActive(std::string("PianoRoll")));
+                gui_drawer_.ToggleWindow("PianoRoll");
             }
             ImGui::EndMenu();
-		}
+        }
 
-        ImGui::EndMainMenuBar();
+        if (ImGui::BeginMenu("Playback")) {
+            if (ImGui::MenuItem("Play")) {
+                Composer* composer = reinterpret_cast<Composer*>(
+                    gui_drawer_.GetWindow("Composer"));
+
+				std::vector<std::vector<Measure>>* measures = composer->GetMeasures();
+
+				// use playback engine to play song
+
+            }
+            ImGui::EndMenu();
+        }
+        
+		ImGui::EndMainMenuBar();
     }
 }

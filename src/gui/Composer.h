@@ -5,6 +5,7 @@
 #include "Canvas.h"
 #include "MeasureButton.h"
 #include "PianoRoll.h"
+#include "../music/Score.h"
 
 class Composer : public GuiWindow {
    private:
@@ -21,6 +22,8 @@ class Composer : public GuiWindow {
    public:
     Composer(PianoRoll* piano_roll) : piano_roll_(piano_roll){};
     ~Composer();
+
+	std::vector<std::vector<Measure>>* GetMeasures();
 
     void setup() override;
     void draw() override;

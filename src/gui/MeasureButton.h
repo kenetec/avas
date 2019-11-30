@@ -18,7 +18,7 @@ class MeasureButton {
     void draw(Canvas& canvas, ImVec2 start_pos, ImVec2 size);
 
 	void SetMeasure(Measure& measure) { measure_ = measure; };
-    Measure* GetMeasure() { return &measure_; };
+    Measure& GetMeasure() { return measure_; };
 
 	void SetName(std::string& name) { name_ = name; };
     std::string GetName() { return name_; };

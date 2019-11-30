@@ -31,6 +31,10 @@ void GuiDrawer::draw() {
     }
 }
 
+void GuiDrawer::ToggleWindow(std::string& name) {
+    SetWindowActive(name, !IsWindowActive(name));
+}
+
 void GuiDrawer::SetWindowActive(std::string& name, bool active) {
     windows.at(name)->SetWindowActive(active);
 }

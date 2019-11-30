@@ -1,11 +1,24 @@
 #include "Composer.h"
 
-Composer::~Composer() {
-    /*for (int row = 0; row < kNumOfRows; row++) {
-        for (int col = 1; col < kNumOfCol; col++) {
-            delete measure_buttons_.at(row).at((int)col-1);
-        }
-    }*/
+Composer::~Composer() {}
+
+std::vector<std::vector<Measure>>* Composer::GetMeasures() {
+    std::vector<std::vector<Measure>>* score =
+        new std::vector<std::vector<Measure>>;
+
+    for (int instrument_index = 0; instrument_index < measure_buttons_.size(); instrument_index++) {
+        std::vector<Measure> measures;
+        std::vector<MeasureButton> measure_btns = measure_buttons_.at(instrument_index);
+
+        for (int measure_index = 0; measure_index < measure_btns.size(); measure_index++) {
+            MeasureButton measure_btn = measure_btns.at(measure_index);
+            measures.push_back(measure_btn.GetMeasure());
+		}
+
+		score->push_back(measures);
+    }
+
+    return score;
 }
 
 void Composer::setup() {
