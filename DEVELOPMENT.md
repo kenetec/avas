@@ -26,4 +26,5 @@
 - Created main menu bar.
 - Created GuiDrawer to streamline window drawing.
 ### 11/29/19
-- Squash bugs
+- Squash bugs.
+- Rewrote PianoRoll to scale dynamically.

@@ -6,33 +6,19 @@ PianoRoll::~PianoRoll() {}
 
 void PianoRoll::LoadMeasure(Measure& measure) {
     measure_ = &measure;
-	 
-	// clear
-	note_buttons_.clear();
 
-	// set vars
-    num_of_rows_ = Beat::kMaxNotesPerDivision + 1; // +1 for labels
-    num_of_cols_ = measure.GetTimeSignature().beats_per_measure + 1; // +1 for labels
+    // clear
+    note_buttons_.clear();
 
-	// generate
+    // set vars
+    num_of_rows_ = Beat::kMaxNotesPerDivision;
+    num_of_cols_ = measure.GetTimeSignature().beats_per_measure;
+    window_size_ =
+        ImVec2((kPixelsPerCol * num_of_cols_) + kNoteLabelsColWidth,
+               (kPixelsPerRow * num_of_rows_) + kTimestampLabelsRowHeight - 8);
+
+    // generate
     GenerateNoteButtons();
-	
-    /*int col_index = 0;
-    for (int beat_index = 0;
-         beat_index < measure.GetTimeSignature().beats_per_measure;
-         beat_index++) {
-        Beat* beat = &measure.GetBeat(beat_index);
-
-        for (int subdivision_index = 0;
-             subdivision_index < beat->GetSubdivisions(); subdivision_index++) {
-            for (int note_index = 0; note_index < Beat::kMaxNotesPerDivision;
-                 note_index++) {
-                NoteButton* nb = &note_buttons_.at(col_index).at(note_index);
-                nb->SetBeat(beat);
-            }
-            col_index++;
-        }
-    }*/
 }
 
 void PianoRoll::GenerateNoteButtons() {
@@ -40,36 +26,31 @@ void PianoRoll::GenerateNoteButtons() {
     // https://stackoverflow.com/questions/28963520/sprintf-command-doesnt-work
     // populate note_buttons_
     char buffer[100];
-    for (int i = 1; i < num_of_rows_; i++) {
-        std::vector<NoteButton> row;
-
-        int note_index = i - 1;
-
-        for (int j = 1; j < num_of_cols_; j++) {
-            int beat_index = j - 1;
-            sprintf_s(buffer, sizeof(buffer), "%d.%d", note_index, j - 1);
+    for (int row = 0; row < num_of_rows_; row++) {
+        std::vector<NoteButton> row_vec;
+        for (int col = 0; col < num_of_cols_; col++) {
+            sprintf_s(buffer, sizeof(buffer), "%d.%d", row, col);
 
             NoteButton nb =
-                NoteButton(buffer, note_index, j - 1, IM_COL32(90, 90, 150, 255));
+                NoteButton(buffer, row, col, kNoteButtonDefaultColor);
 
-			nb.SetBeat(&measure_->GetBeat(beat_index));
+            nb.SetBeat(&measure_->GetBeat(col), kBeatSubdivision);
 
-            row.push_back(nb);
+            row_vec.push_back(nb);
         }
 
-        note_buttons_.push_back(row);
+        note_buttons_.push_back(row_vec);
     }
 }
 
-void PianoRoll::setup() {
-    window_active_ = true;
-}
+void PianoRoll::setup() { window_active_ = true; }
 
 void PianoRoll::draw() {
     // ImGui::StyleColorsDark();
-    ImGui::SetNextWindowContentSize(ImVec2(800, 316));
-    ImGui::SetNextWindowPos(ImVec2(100, 300), ImGuiCond_FirstUseEver);
-    ImGui::Begin("Piano Roll", &window_active_);
+    ImGui::SetNextWindowContentSize(window_size_);
+    ImGui::SetNextWindowPos(kWindowPos, ImGuiCond_FirstUseEver);
+    ImGui::Begin("Piano Roll", &window_active_,
+                 ImGuiWindowFlags_AlwaysAutoResize);
 
     if (measure_ != nullptr) {
         {  // set variables
@@ -78,11 +59,14 @@ void PianoRoll::draw() {
             canvas_.size = ImGui::GetContentRegionAvail();
             canvas_.end_pos = canvas_.pos + canvas_.size;
 
-            vertical_divider_x_offset_ =
-                ((canvas_.end_pos.x - canvas_.pos.x) / num_of_cols_);
+            vertical_divider_x_offset_ = (int)floor(
+                ((canvas_.end_pos.x - canvas_.pos.x - kNoteLabelsColWidth) /
+                 num_of_cols_));
 
             horizontal_divider_y_offset_ =
-                ((canvas_.end_pos.y - canvas_.pos.y) / num_of_rows_);
+                (int)floor(((canvas_.end_pos.y - canvas_.pos.y -
+                             kTimestampLabelsRowHeight) /
+                            num_of_rows_));
         }
 
         {  // draw
@@ -93,7 +77,9 @@ void PianoRoll::draw() {
             DrawNoteButtons();
         }
 
-        canvas_.draw_list->PushClipRect(canvas_.pos, canvas_.end_pos);
+        // canvas_.draw_list->PushClipRect(canvas_.pos, canvas_.end_pos);
+    } else {
+        ImGui::Text("Select a measure");
     }
 
     ImGui::End();
@@ -114,10 +100,44 @@ void PianoRoll::DrawBackground() {
                                IM_COL32(255, 255, 255, 255));
 }
 
+void PianoRoll::DrawNoteNames() {
+    ImVec2 start_pos = canvas_.pos;
+    ImVec2 end_pos = canvas_.pos + ImVec2(kNoteLabelsColWidth, canvas_.size.y);
+    // draw background maybe?
+    for (int row = 0; row < num_of_rows_; row++) {
+        ImVec2 pos = ImVec2(10, (horizontal_divider_y_offset_ * row) +
+                                    kTimestampLabelsRowHeight) +
+                     canvas_.pos;
+
+        canvas_.draw_list->AddText(pos, IM_COL32(255, 255, 255, 255),
+                                   kNoteNames[row].c_str());
+    }
+}
+
+void PianoRoll::DrawTimestamps() {
+    ImVec2 start_pos = canvas_.pos;
+    ImVec2 end_pos =
+        canvas_.pos + ImVec2(canvas_.size.x, kTimestampLabelsRowHeight);
+
+    // draw background ??
+
+    char buffer[4];
+    for (int col = 0; col < num_of_cols_; col++) {
+        ImVec2 pos =
+            ImVec2((vertical_divider_x_offset_ * col) + kNoteLabelsColWidth,
+                   horizontal_divider_y_offset_ * 0.10) +
+            canvas_.pos;
+
+        sprintf_s(buffer, sizeof(buffer), "%d", (col % 4) + 1);
+        canvas_.draw_list->AddText(pos, IM_COL32(255, 255, 255, 255), buffer);
+    }
+}
+
 void PianoRoll::DrawDividingLines() {
     // draw vertical
     for (int i = 0; i < num_of_cols_; i++) {
-        int x = (vertical_divider_x_offset_ * i) + canvas_.pos.x;
+        int x = (vertical_divider_x_offset_ * i) + kNoteLabelsColWidth +
+                canvas_.pos.x;
         ImVec2 start_pos(x, canvas_.pos.y);
         ImVec2 end_pos(x, canvas_.end_pos.y);
 
@@ -127,7 +147,8 @@ void PianoRoll::DrawDividingLines() {
 
     // draw horizontal
     for (int i = 0; i < num_of_rows_; i++) {
-        int y = (horizontal_divider_y_offset_ * i) + canvas_.pos.y;
+        int y = (horizontal_divider_y_offset_ * i) + kTimestampLabelsRowHeight +
+                canvas_.pos.y;
         ImVec2 start_pos(canvas_.pos.x, y);
         ImVec2 end_pos(canvas_.end_pos.x, y);
 
@@ -136,52 +157,30 @@ void PianoRoll::DrawDividingLines() {
     }
 }
 
-void PianoRoll::DrawNoteNames() {
-    for (int row = kNoteNamesIndexOffset; row < num_of_rows_; row++) {
-        ImVec2 pos = ImVec2(vertical_divider_x_offset_ * .10,
-                            horizontal_divider_y_offset_ * (row)) +
-                     canvas_.pos;
-
-        canvas_.draw_list->AddText(
-            pos, IM_COL32(255, 255, 255, 255),
-            kNoteNames[(int)row - kNoteNamesIndexOffset].c_str());
-    }
-}
-
-void PianoRoll::DrawTimestamps() {
-    char buffer[4];
-    for (int col = 1; col < num_of_cols_; col++) {
-        ImVec2 pos = ImVec2(vertical_divider_x_offset_ * (col),
-                            horizontal_divider_y_offset_ * 0.10) +
-                     canvas_.pos;
-
-        sprintf_s(buffer, sizeof(buffer), "%d.%d",
-                  (int)floor((col - 1) / 4) + 1, ((col - 1) % 4) + 1);
-        canvas_.draw_list->AddText(pos, IM_COL32(255, 255, 255, 255), buffer);
-    }
-}
-
 void PianoRoll::DrawNoteButtons() {
-    for (int row = 1; row < num_of_rows_; row++) {
-        for (int col = 1; col < num_of_cols_; col++) {
-            ImVec2 start_pos = ImVec2(vertical_divider_x_offset_ * col,
-                                      horizontal_divider_y_offset_ * row);
+    for (int row = 0; row < num_of_rows_; row++) {
+        for (int col = 0; col < num_of_cols_; col++) {
+            ImVec2 start_pos = ImVec2((vertical_divider_x_offset_ * col),
+                                      (horizontal_divider_y_offset_ * row));
             ImVec2 size = ImVec2(vertical_divider_x_offset_ * (col + 1),
                                  horizontal_divider_y_offset_ * (row + 1)) -
                           start_pos - ImVec2(2, 2);
 
-            ImVec2 cursor_pos = canvas_.pos + start_pos + ImVec2(1, 1);
+            ImVec2 cursor_pos =
+                canvas_.pos + start_pos + ImVec2(1, 1) +
+                ImVec2(kNoteLabelsColWidth, kTimestampLabelsRowHeight);
+
             ImGui::SetCursorScreenPos(cursor_pos);
 
             ImU32 color;
             if (col % 2 == 0) {
-                color = IM_COL32(60, 60, 65, 255);
+                color = kEvenNoteButtonColor;
             } else {
-                color = IM_COL32(50, 50, 55, 255);
+                color = kOddNoteButtonColor;
             };
 
-            std::vector<NoteButton>* row_vec = &note_buttons_.at((int)row - 1);
-            NoteButton* nb = &row_vec->at((int)col - 1);
+            std::vector<NoteButton>* row_vec = &note_buttons_.at(row);
+            NoteButton* nb = &row_vec->at(col);
             nb->draw(canvas_, cursor_pos, size, color);
         }
     }

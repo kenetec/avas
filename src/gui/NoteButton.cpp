@@ -10,12 +10,13 @@ void NoteButton::draw(Canvas& piano_roll_canvas, ImVec2 start_pos, ImVec2 size,
         active_ = !active_;
 
 		if (beat_ != nullptr) {
-            beat_->ToggleNoteActive(0, row_);
+            beat_->ToggleNoteActive(subdivision_, row_);
         }
     }
 }
 
-void NoteButton::SetBeat(Beat* beat) {
+void NoteButton::SetBeat(Beat* beat, int subdivision) {
     beat_ = beat;
-    active_ = beat_->GetNote(0, row_).GetActive();
+    subdivision_ = subdivision;
+    active_ = beat_->GetNote(subdivision, row_).GetActive();
 }

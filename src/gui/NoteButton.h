@@ -13,6 +13,7 @@ class NoteButton {
     ImU32 active_color_;
     int row_;
     int col_;
+	int subdivision_;
 
    public:
     NoteButton(std::string note_name, int row, int col, ImU32 active_color)
@@ -25,7 +26,7 @@ class NoteButton {
 
     void draw(Canvas& piano_roll_canvas, ImVec2 start_pos, ImVec2 size, ImU32 default_color);
 
-    void SetBeat(Beat* beat);
+    void SetBeat(Beat* beat, int subdivision_);
     Note& GetNote() { return beat_->GetNote(0, row_); };
     void SetActive(bool active) { active_ = active; };
     bool IsActive() { return active_; };
