@@ -32,4 +32,4 @@
 - Composer returns all measures.
 - "Play" menu item in MainMenuBar.
 - Added overloading functions to GuiDrawer.
-- Create playback engine.
+- Created PlaybackEngine class.
