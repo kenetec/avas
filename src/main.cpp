@@ -5,7 +5,8 @@
 // TODO: MAKE BIRDS IN VISUALS
 
 /*
-TODOS (top = highest priority):
+TODOS (top = highest priority)
+===============================
 - Make playback engine play notes!
 - Make MeasureButton show notes that were selected in a minature
 - VISUALS!!!
@@ -14,7 +15,7 @@ TODOS (top = highest priority):
 	- NoteButton and MeasureButton need to be tested.
 - Make GUI look nice
 - Saving & Loading
-=== FINISH LINE ===
+========= FINISH LINE =========
 - Tackle stretch goals
 */
 
