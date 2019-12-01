@@ -6,7 +6,7 @@ Beat::Beat(int subdivisions) : subdivisions_(subdivisions) {
         std::vector<Note> subdivision;
 
         for (int j = 0; j < Beat::kMaxNotesPerDivision; j++) {
-            subdivision.push_back(Note());
+            subdivision.push_back(Note(NoteType::QUARTER));
         }
 
 		notes_.push_back(subdivision);

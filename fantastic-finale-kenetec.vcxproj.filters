@@ -121,6 +121,9 @@
     <ClCompile Include="src\gui\MeasureButton.cpp">
       <Filter>src\gui</Filter>
     </ClCompile>
+    <ClCompile Include="src\music\PlaybackEngine.cpp">
+      <Filter>src\music</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -304,6 +307,9 @@
     </ClInclude>
     <ClInclude Include="src\gui\MeasureButton.h">
       <Filter>src\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\music\PlaybackEngine.h">
+      <Filter>src\music</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

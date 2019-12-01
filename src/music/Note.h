@@ -14,11 +14,14 @@ class Note {
    public:
     Note();
     Note(NoteType note_type);
-    Note(NoteType note_type, ofSoundPlayer *sound){};
-    Note(NoteType note_type, ofSoundPlayer *sound, double duration){};
-    void CalculateDuration(int bpm);
-    void ToRest() { sound_ = nullptr; }
+    Note(NoteType note_type, ofSoundPlayer *sound);
     void Play();
+    //void CalculateDuration(int bpm);
+    void ToRest() { sound_ = nullptr; }
+
+	void SetSound(ofSoundPlayer *sound) { sound_ = sound; };
+    ofSoundPlayer* GetSound() { return sound_; };
+
     void SetActive(bool active) {active_ = active;};
     bool GetActive() { return active_; };
 

@@ -7,15 +7,18 @@
 /*
 TODOS (top = highest priority)
 ===============================
-- Make playback engine play notes!
-- Make MeasureButton show notes that were selected in a minature
-- VISUALS!!!
+- Make playback engine play notes!!!!
+- Make MeasureButton show notes that were selected in a minature(also show selection box).
+- VISUALS!!!!!!
+	- Some 3D shapes would be gucci.
+	- 3D particles that pulse.
+	- Fractals?
 - TESTS!!!!!
-	- All of the files in ./music need to be tested.
+	- All of the classes in ./music need to be tested.
 	- NoteButton and MeasureButton need to be tested.
-- Make GUI look nice
 - Saving & Loading
 ========= FINISH LINE =========
+- Make GUI look nice
 - Tackle stretch goals
 */
 

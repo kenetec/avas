@@ -1,6 +1,9 @@
 #include "MainMenuBar.h"
 
-void MainMenuBar::setup(GuiDrawer& gui_drawer) { gui_drawer_ = gui_drawer; }
+void MainMenuBar::setup(GuiDrawer& gui_drawer, PlaybackEngine& playback_engine) {
+    gui_drawer_ = gui_drawer;
+    playback_engine_ = &playback_engine;
+}
 
 /*
 Code derived from: https://github.com/ocornut/imgui#integration
@@ -35,7 +38,7 @@ void MainMenuBar::draw() {
 				std::vector<std::vector<Measure>>* measures = composer->GetMeasures();
 
 				// use playback engine to play song
-
+                playback_engine_->Play(*measures);
             }
             ImGui::EndMenu();
         }

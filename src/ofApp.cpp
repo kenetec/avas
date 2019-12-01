@@ -1,5 +1,7 @@
 #include "ofApp.h"
 
+ofApp::ofApp() { playback_engine_ = PlaybackEngine(sound_loader_); }
+
 /*
 Code derived from:
 https://www.youtube.com/watch?v=IiTsE7P-GDs&list=PL4neAtv21WOmrV8z9rSzL20QpdLU1zJLr&index=37&t=481s
@@ -10,10 +12,13 @@ void ofApp::setup() {
 
 	imgui_.setup();
     gui_drawer_.setup();
-    main_menu_bar_.setup(gui_drawer_);
+    main_menu_bar_.setup(gui_drawer_, playback_engine_);
     visualizer_.setup();
 
     volume = 0;
+    sound_loader_.AddSound("metronome_sound", R"()");
+    sound_loader_.GetSoundPlayer("metronome_sound");
+
     sound_player.loadSound(
         R"(C:\Users\heste\source\repos\CS126FA19\fantastic-finale-kenetec\resources\waves.mp3)");
 

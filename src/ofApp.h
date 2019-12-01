@@ -6,6 +6,8 @@
 
 #include "gui/MainMenuBar.h"
 #include "GuiDrawer.h"
+#include "music/SoundLoader.h"
+
 #include "visualizer/Visualizer.h"
 
 /*
@@ -15,6 +17,7 @@ https://www.youtube.com/watch?v=IiTsE7P-GDs&list=PL4neAtv21WOmrV8z9rSzL20QpdLU1z
 
 class ofApp : public ofBaseApp {
    public:
+    ofApp();
     void setup();
     void update();
     void draw();
@@ -29,6 +32,10 @@ private:
 
 	MainMenuBar main_menu_bar_;
 	GuiDrawer gui_drawer_;
+
+	SoundLoader sound_loader_;
+    PlaybackEngine playback_engine_;
+
     Visualizer visualizer_;
 
 	ofSoundPlayer sound_player;
