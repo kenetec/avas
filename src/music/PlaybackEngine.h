@@ -24,7 +24,7 @@ class PlaybackEngine {
     void Load(std::vector<std::vector<Measure>>& measures);
 
 	void Play(std::vector<std::vector<Measure>>& all_measures);
-    void PlayBeatAtSubdivisionAsync(Beat& beat, int subdivision);
+    void PlayBeatAtSubdivisionAsync(Beat& beat);
     void Stop();
     void Pause();
 

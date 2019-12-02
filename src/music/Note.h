@@ -1,8 +1,8 @@
 #pragma once
+#include <vector>
+#include <string>
 
-#include "ofMain.h"
-
-enum NoteType {
+enum class NoteType {
     SIXTEENTH,
     EIGHTH,
     QUARTER,
@@ -10,25 +10,12 @@ enum NoteType {
     WHOLE,
 };
 
-class Note {
-   public:
-    Note();
-    Note(NoteType note_type);
-    Note(NoteType note_type, ofSoundPlayer *sound);
-    void Play();
-    //void CalculateDuration(int bpm);
-    void ToRest() { sound_ = nullptr; }
+enum class NoteName { C, Db, D, Eb, E, F, Gb, G, Ab, A, Bb, B };
 
-	void SetSound(ofSoundPlayer *sound) { sound_ = sound; };
-    ofSoundPlayer* GetSound() { return sound_; };
-
-    void SetActive(bool active) {active_ = active;};
-    bool GetActive() { return active_; };
-
-   private:
-    NoteType note_type_;
-    // Points to sound loaded in SoundLoader
-    ofSoundPlayer *sound_;
-    double duration_;
-    bool active_ = false;
+struct Note {
+    NoteType note_type;
+    NoteName note_name;
+    std::string note_name_str;
+    int octave;
+    bool active = false;
 };

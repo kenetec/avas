@@ -9,34 +9,22 @@ class SoundLoader {
     SoundLoader();
 
 	/*
-		Adds sound_name to map of sound_name->file_path
-	*/
-    void AddSound(std::string sound_name, std::string file_path);
-
-	/*
-       Returns cached SoundPlayer or automatically creates a SoundPlayer if none exists, caches, and then returns it.
+       Creates a SoundPlayer and then returns it.
     */
-    ofSoundPlayer* GetSoundPlayer(std::string sound_name, std::string file_path);
+    ofSoundPlayer* AddSound(std::string file_path);
 
 	/*
-		Returns cached SoundPlayer or automatically creates a SoundPlayer if none exists, caches, and then returns it.
+		Returns cached SoundPlayer or creates a new one and returns it.
 	*/
-    ofSoundPlayer* GetSoundPlayer(std::string sound_name);
+    ofSoundPlayer* GetSoundPlayer(std::string file_path);
 
 	/*
 		Deletes entry in cache.
 	*/
-    void DeleteSound(std::string sound_name);
+    void DeleteSound(std::string file_path);
 
-	std::map<std::string, std::string>* GetNamesToPaths() {
-        return &names_to_paths;
-    }
-
-	std::map<std::string, ofSoundPlayer*>* GetNamesToSoundPlayers() {
-        return &names_to_sound_players;
-	}
+	std::map<std::string, ofSoundPlayer>& GetPathsToSoundPlayers();
 
    private:
-    std::map<std::string, std::string> names_to_paths;
-    std::map<std::string, ofSoundPlayer*> names_to_sound_players;
+    std::map<std::string, ofSoundPlayer> paths_to_sound_players;
 };
