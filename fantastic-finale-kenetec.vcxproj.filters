@@ -94,9 +94,6 @@
     <ClCompile Include="src\music\Measure.cpp">
       <Filter>src\music</Filter>
     </ClCompile>
-    <ClCompile Include="src\music\Note.cpp">
-      <Filter>src\music</Filter>
-    </ClCompile>
     <ClCompile Include="src\music\Score.cpp">
       <Filter>src\music</Filter>
     </ClCompile>
@@ -123,6 +120,18 @@
     </ClCompile>
     <ClCompile Include="src\music\PlaybackEngine.cpp">
       <Filter>src\music</Filter>
+    </ClCompile>
+    <ClCompile Include="src\music\Instrument.cpp">
+      <Filter>src\music</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\InstrumentTest.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\BeatTest.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gui\Grid.cpp">
+      <Filter>src\gui</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -173,6 +182,15 @@
     </Filter>
     <Filter Include="resources">
       <UniqueIdentifier>{9e43ed88-ea90-4df0-b251-277b54d9bc83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resources\metronome">
+      <UniqueIdentifier>{0793aef2-64a2-4ad2-9f73-d11cd006ad96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test_resources">
+      <UniqueIdentifier>{40dc1607-cb92-4a68-afdc-680af95eaf55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test_resources\metronome">
+      <UniqueIdentifier>{6ac5d612-8f09-4bfc-90fa-99d5bf2971f9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -311,6 +329,12 @@
     <ClInclude Include="src\music\PlaybackEngine.h">
       <Filter>src\music</Filter>
     </ClInclude>
+    <ClInclude Include="src\music\Instrument.h">
+      <Filter>src\music</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gui\Grid.h">
+      <Filter>src\gui</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
@@ -319,6 +343,21 @@
     <None Include="DEVELOPMENT.md" />
     <None Include="PROPOSAL.md" />
     <None Include="tests.runsettings" />
+    <None Include="resources\metronome\Metronome.wav.asd">
+      <Filter>resources\metronome</Filter>
+    </None>
+    <None Include="resources\metronome\MetronomeUp.wav.asd">
+      <Filter>resources\metronome</Filter>
+    </None>
+    <None Include="test_resources\metronome\Metronome.wav.asd">
+      <Filter>test_resources\metronome</Filter>
+    </None>
+    <None Include="test_resources\metronome\MetronomeUp.wav.asd">
+      <Filter>test_resources\metronome</Filter>
+    </None>
+    <None Include="test_resources\metronome\SOUND_MAP.json">
+      <Filter>test_resources\metronome</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Media Include="resources\broccoli.mp3">
@@ -330,5 +369,25 @@
     <Media Include="resources\waves.mp3">
       <Filter>resources</Filter>
     </Media>
+    <Media Include="resources\metronome\Metronome.wav">
+      <Filter>resources\metronome</Filter>
+    </Media>
+    <Media Include="resources\metronome\MetronomeUp.wav">
+      <Filter>resources\metronome</Filter>
+    </Media>
+    <Media Include="test_resources\metronome\Metronome.wav">
+      <Filter>test_resources\metronome</Filter>
+    </Media>
+    <Media Include="test_resources\metronome\MetronomeUp.wav">
+      <Filter>test_resources\metronome</Filter>
+    </Media>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="resources\metronome\CREDIT.txt.txt">
+      <Filter>resources\metronome</Filter>
+    </Text>
+    <Text Include="test_resources\metronome\CREDIT.txt.txt">
+      <Filter>test_resources\metronome</Filter>
+    </Text>
   </ItemGroup>
 </Project>

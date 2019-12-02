@@ -181,6 +181,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\gui\Composer.cpp" />
+    <ClCompile Include="src\gui\Grid.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="src\gui\GuiDrawer.cpp" />
     <ClCompile Include="src\gui\MeasureButton.cpp" />
     <ClCompile Include="src\gui\NoteButton.cpp" />
@@ -212,13 +216,21 @@
     <ClCompile Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxImGui\libs\imgui\src\imgui_draw.cpp" />
     <ClCompile Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxImGui\libs\imgui\src\imgui_widgets.cpp" />
     <ClCompile Include="src\music\Beat.cpp" />
+    <ClCompile Include="src\music\Instrument.cpp" />
     <ClCompile Include="src\music\Measure.cpp" />
-    <ClCompile Include="src\music\Note.cpp" />
     <ClCompile Include="src\music\PlaybackEngine.cpp" />
     <ClCompile Include="src\music\Score.cpp" />
     <ClCompile Include="src\music\SoundLoader.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="src\visualizer\Visualizer.cpp" />
+    <ClCompile Include="tests\BeatTest.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="tests\InstrumentTest.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="tests\main.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -231,6 +243,10 @@
   <ItemGroup>
     <ClInclude Include="src\gui\Canvas.h" />
     <ClInclude Include="src\gui\Composer.h" />
+    <ClInclude Include="src\gui\Grid.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="src\gui\GuiDrawer.h" />
     <ClInclude Include="src\gui\GuiWindow.h" />
     <ClInclude Include="src\gui\MeasureButton.h" />
@@ -266,6 +282,7 @@
     <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxImGui\libs\imgui\src\imstb_truetype.h" />
     <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxUnitTests\src\ofxUnitTests.h" />
     <ClInclude Include="src\music\Beat.h" />
+    <ClInclude Include="src\music\Instrument.h" />
     <ClInclude Include="src\music\Measure.h" />
     <ClInclude Include="src\music\Note.h" />
     <ClInclude Include="src\music\PlaybackEngine.h" />
@@ -289,12 +306,25 @@
   <ItemGroup>
     <None Include="DEVELOPMENT.md" />
     <None Include="PROPOSAL.md" />
+    <None Include="resources\metronome\Metronome.wav.asd" />
+    <None Include="resources\metronome\MetronomeUp.wav.asd" />
     <None Include="tests.runsettings" />
+    <None Include="test_resources\metronome\Metronome.wav.asd" />
+    <None Include="test_resources\metronome\MetronomeUp.wav.asd" />
+    <None Include="test_resources\metronome\SOUND_MAP.json" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="resources\broccoli.mp3" />
+    <Media Include="resources\metronome\Metronome.wav" />
+    <Media Include="resources\metronome\MetronomeUp.wav" />
     <Media Include="resources\surface.mp3" />
     <Media Include="resources\waves.mp3" />
+    <Media Include="test_resources\metronome\Metronome.wav" />
+    <Media Include="test_resources\metronome\MetronomeUp.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="resources\metronome\CREDIT.txt.txt" />
+    <Text Include="test_resources\metronome\CREDIT.txt.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ProjectExtensions>

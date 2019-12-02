@@ -16,8 +16,8 @@ void ofApp::setup() {
     visualizer_.setup();
 
     volume = 0;
-    sound_loader_.AddSound("metronome_sound", R"()");
-    sound_loader_.GetSoundPlayer("metronome_sound");
+    //sound_loader_.AddSound("metronome_sound", R"(C:\Users\heste\source\repos\CS126FA19\fantastic-finale-kenetec\resources\metronome\Metronome.wav)");
+    //sound_loader_.GetSoundPlayer("metronome_sound");
 
     sound_player.loadSound(
         R"(C:\Users\heste\source\repos\CS126FA19\fantastic-finale-kenetec\resources\waves.mp3)");

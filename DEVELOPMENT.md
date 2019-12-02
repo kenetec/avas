@@ -7,6 +7,7 @@
 - Attempted to implement CMake but horribly failed (will try again another time).
 - Added ofxImGui for most robust GUI system.
 - Began writing system for music composition.
+	- Score->Measures->Beats->Notes
 
 # Week 2 😭
 ### 11/25/19
@@ -33,3 +34,8 @@
 - "Play" menu item in MainMenuBar.
 - Added overloading functions to GuiDrawer.
 - Created PlaybackEngine class.
+### 12/1/19
+- Revamp music structure.
+	- Score->Instruments->Measures->Beats->Notes
+- Added Instrument abstraction.
+- Altered piano roll.

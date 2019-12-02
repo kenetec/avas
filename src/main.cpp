@@ -3,10 +3,12 @@
 #include "ofApp.h"
 
 // TODO: MAKE BIRDS IN VISUALS
+// TODO: UPDATE PROPOSAL.md
 
 /*
 TODOS (top = highest priority)
 ===============================
+- DONE: REVAMP MUSIC STRUCTURE +
 - Make playback engine play notes!!!!
 - Make MeasureButton show notes that were selected in a minature(also show selection box).
 - VISUALS!!!!!!
