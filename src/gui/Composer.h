@@ -9,6 +9,7 @@
 
 class Composer : public GuiWindow {
    private:
+    const ImVec2 kWindowPos = ImVec2(0, 0);
     const int kNumOfRows = 5;
     const int kNumOfCol = 5;
 

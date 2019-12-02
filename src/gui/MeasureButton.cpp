@@ -7,8 +7,6 @@ MeasureButton::MeasureButton(PianoRoll* piano_roll, std::string name)
 
 void MeasureButton::draw(Canvas& canvas, ImVec2 start_pos, ImVec2 size) {
     if (ImGui::InvisibleButton(name_.c_str(), size)) {
-        //active_ = !active_;
-        std::cout << "clicked " << name_ << std::endl;
         piano_roll_->LoadMeasure(measure_);
     }
 }

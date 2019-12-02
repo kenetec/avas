@@ -1,7 +1,6 @@
 #include "PianoRoll.h"
 
 PianoRoll::PianoRoll() { measure_ = nullptr; }
-
 PianoRoll::~PianoRoll() {}
 
 void PianoRoll::LoadMeasure(Measure& measure) {
@@ -11,8 +10,7 @@ void PianoRoll::LoadMeasure(Measure& measure) {
     note_buttons_.clear();
 
     // set vars
-    num_of_rows_ = Beat::kMaxNotesPerDivision;
-    num_of_cols_ = measure.GetTimeSignature().beats_per_measure;
+    num_of_cols_ = measure.time_signature.beats_per_measure;
     window_size_ =
         ImVec2((kPixelsPerCol * num_of_cols_) + kNoteLabelsColWidth,
                (kPixelsPerRow * num_of_rows_) + kTimestampLabelsRowHeight - 8);
@@ -26,20 +24,20 @@ void PianoRoll::GenerateNoteButtons() {
     // https://stackoverflow.com/questions/28963520/sprintf-command-doesnt-work
     // populate note_buttons_
     char buffer[100];
-    for (int row = 0; row < num_of_rows_; row++) {
-        std::vector<NoteButton> row_vec;
-        for (int col = 0; col < num_of_cols_; col++) {
+    for (int col = 0; col < num_of_cols_; col++) {
+        std::vector<NoteButton> col_vec;
+        for (int row = 0; row < num_of_rows_; row++) {
             sprintf_s(buffer, sizeof(buffer), "%d.%d", row, col);
 
-            NoteButton nb =
-                NoteButton(buffer, row, col, kNoteButtonDefaultColor);
+            Beat* beat = &measure_->beats.at(col);
+            Note* note = &beat->GetNotes().at(row % Instrument::kNotesPerOctaves);
 
-            nb.SetBeat(&measure_->GetBeat(col), kBeatSubdivision);
+            NoteButton nb = NoteButton(buffer, *note, row, col, kNoteButtonDefaultColor);
 
-            row_vec.push_back(nb);
+            col_vec.push_back(nb);
         }
 
-        note_buttons_.push_back(row_vec);
+        note_buttons_.push_back(col_vec);
     }
 }
 
@@ -105,12 +103,10 @@ void PianoRoll::DrawNoteNames() {
     ImVec2 end_pos = canvas_.pos + ImVec2(kNoteLabelsColWidth, canvas_.size.y);
     // draw background maybe?
     for (int row = 0; row < num_of_rows_; row++) {
-        ImVec2 pos = ImVec2(10, (horizontal_divider_y_offset_ * row) +
-                                    kTimestampLabelsRowHeight) +
-                     canvas_.pos;
+        ImVec2 pos = ImVec2(10, (horizontal_divider_y_offset_ * row) + kTimestampLabelsRowHeight) + canvas_.pos;
 
         canvas_.draw_list->AddText(pos, IM_COL32(255, 255, 255, 255),
-                                   kNoteNames[row].c_str());
+                                   kNoteNames.at(row % Instrument::kNotesPerOctaves).c_str());
     }
 }
 
@@ -158,8 +154,8 @@ void PianoRoll::DrawDividingLines() {
 }
 
 void PianoRoll::DrawNoteButtons() {
-    for (int row = 0; row < num_of_rows_; row++) {
-        for (int col = 0; col < num_of_cols_; col++) {
+    for (int col = 0; col < num_of_cols_; col++) {
+        for (int row = 0; row < num_of_rows_; row++) {
             ImVec2 start_pos = ImVec2((vertical_divider_x_offset_ * col),
                                       (horizontal_divider_y_offset_ * row));
             ImVec2 size = ImVec2(vertical_divider_x_offset_ * (col + 1),
@@ -179,8 +175,8 @@ void PianoRoll::DrawNoteButtons() {
                 color = kOddNoteButtonColor;
             };
 
-            std::vector<NoteButton>* row_vec = &note_buttons_.at(row);
-            NoteButton* nb = &row_vec->at(col);
+            std::vector<NoteButton>* row_vec = &note_buttons_.at(col);
+            NoteButton* nb = &row_vec->at(row % 12);
             nb->draw(canvas_, cursor_pos, size, color);
         }
     }

@@ -7,10 +7,7 @@
 #include "GuiWindow.h"
 #include "NoteButton.h"
 #include "../music/Measure.h"
-
-const std::vector<std::string> kNoteNames{"C",     "C#/Db", "D",     "D#/Eb",
-                                          "E",     "F",     "F#/Gb", "G",
-                                          "G#/Ab", "A",     "A#/Bb", "B"};
+#include "../music/Instrument.h"
 
 class PianoRoll : public GuiWindow {
    private:
@@ -20,6 +17,9 @@ class PianoRoll : public GuiWindow {
 	const int kPixelsPerRow = 25;
     const int kPixelsPerCol = 75;
     const int kBeatSubdivision = 0;
+
+    const std::vector<std::string> kNoteNames = {
+        "C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B"};
 
 	const ImU32 kNoteRowLabelsBackgroundColor = IM_COL32(50, 50, 60, 255);
 
@@ -33,11 +33,10 @@ class PianoRoll : public GuiWindow {
 
     ImVec2 window_size_ = ImVec2(0, 0);
 
-    int num_of_cols_;  // 4 beats * 4 bars + 1 extra for note names
-    int num_of_rows_;  // 12 notes + 1 extra for timestamps
+    int num_of_cols_;
+    int num_of_rows_ = Instrument::kNotesPerOctaves * Instrument::kMaxOctaves;
     int vertical_divider_x_offset_;
     int horizontal_divider_y_offset_;
-    //int kNoteNamesIndexOffset = num_of_rows_ - 12;  // 12 notes
 
    public:
     PianoRoll();

@@ -5,7 +5,7 @@
 
 class GuiDrawer {
    private:
-    std::map<std::string, GuiWindow*> windows;
+    std::map<std::string, GuiWindow*> windows_;
 
    public:
     GuiDrawer();
@@ -16,7 +16,7 @@ class GuiDrawer {
 	void ToggleWindow(std::string& name);
     void SetWindowActive(std::string& name, bool active);
     bool IsWindowActive(std::string& name);
-    GuiWindow* GetWindow(std::string& name) { return windows.at(name); }
+    GuiWindow* GetWindow(std::string& name) { return windows_.at(name); }
 
 	void ToggleWindow(const char* name) { ToggleWindow(std::string(name)); }
 	void SetWindowActive(const char* name, bool active) {SetWindowActive(std::string(name), active);}
