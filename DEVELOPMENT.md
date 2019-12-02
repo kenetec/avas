@@ -39,3 +39,6 @@
 	- Score->Instruments->Measures->Beats->Notes
 - Added Instrument abstraction.
 - Altered piano roll.
+### 12/2/19
+- Fixed piano roll.
+- 

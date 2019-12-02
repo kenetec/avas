@@ -12,8 +12,8 @@ void PianoRoll::LoadMeasure(Measure& measure) {
     // set vars
     num_of_cols_ = measure.time_signature.beats_per_measure;
     window_size_ =
-        ImVec2((kPixelsPerCol * num_of_cols_) + kNoteLabelsColWidth,
-               (kPixelsPerRow * num_of_rows_) + kTimestampLabelsRowHeight - 8);
+        ImVec2((kPixelsPerCol * num_of_cols_),
+               (kPixelsPerRow * num_of_rows_));
 
     // generate
     GenerateNoteButtons();
@@ -30,7 +30,7 @@ void PianoRoll::GenerateNoteButtons() {
             sprintf_s(buffer, sizeof(buffer), "%d.%d", row, col);
 
             Beat* beat = &measure_->beats.at(col);
-            Note* note = &beat->GetNotes().at(row % Instrument::kNotesPerOctaves);
+            Note* note = &beat->GetNotes().at(row);
 
             NoteButton nb = NoteButton(buffer, *note, row, col, kNoteButtonDefaultColor);
 
@@ -116,7 +116,6 @@ void PianoRoll::DrawTimestamps() {
         canvas_.pos + ImVec2(canvas_.size.x, kTimestampLabelsRowHeight);
 
     // draw background ??
-
     char buffer[4];
     for (int col = 0; col < num_of_cols_; col++) {
         ImVec2 pos =
@@ -176,7 +175,7 @@ void PianoRoll::DrawNoteButtons() {
             };
 
             std::vector<NoteButton>* row_vec = &note_buttons_.at(col);
-            NoteButton* nb = &row_vec->at(row % 12);
+            NoteButton* nb = &row_vec->at(row);
             nb->draw(canvas_, cursor_pos, size, color);
         }
     }

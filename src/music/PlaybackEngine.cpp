@@ -26,8 +26,7 @@ void PlaybackEngine::Play(std::vector<std::vector<Measure>>& all_measures) {
 void PlaybackEngine::PlayBeatAtSubdivisionAsync(Beat& beat) {
     std::vector<Note> notes = beat.GetNotes();
     for (int note_index = 0; note_index < notes.size(); note_index++) {
-        Note note = notes.at(note_index);
-        /*note.Play();*/
+        Note* note = &notes.at(note_index);
     }
 }
 

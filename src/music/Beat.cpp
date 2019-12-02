@@ -1,7 +1,7 @@
 #include "Beat.h"
 
 Beat::Beat() {
-    for (int j = 0; j < kNotesPerOctaves; j++) {
+    for (int j = 0; j < kNotesPerOctaves * kMaxOctaves; j++) {
         notes_.push_back(Note());
     }
 };

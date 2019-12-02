@@ -11,4 +11,5 @@ class Beat {
    private:
     std::vector<Note> notes_;
     const int kNotesPerOctaves = 12;
+    const int kMaxOctaves = 6;
 };
