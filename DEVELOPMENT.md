@@ -18,7 +18,7 @@
 - Organized files into folders.
 - Add more functionality to music structures
 
-# Week 3 😣
+# Week 3 😣💢
 ### 11/27/19
 - Create basic piano roll interface.
 - Started gui integration with music structure.
@@ -40,5 +40,15 @@
 - Added Instrument abstraction.
 - Altered piano roll.
 ### 12/2/19
-- Fixed piano roll.
+- Fixed Beat class.
+- Started visualizer.
+### 12/3/19
+- Composer GUI is updated to support Instruments.
+- Grid class is fleshed out.
+- Remade Composer use Grid.
+- Created proper connection from Composer to Score.
+
+# Week 4 🥵
+### 12/4/19
+- SOUND!!! 🎉🎊🎉
 - 
