@@ -1,6 +1,6 @@
 #include "ofApp.h"
 
-ofApp::ofApp() { playback_engine_ = PlaybackEngine(sound_loader_); }
+ofApp::ofApp() {}
 
 /*
 Code derived from:
@@ -36,7 +36,7 @@ void ofApp::update() {
 }
 
 void ofApp::draw() {
-    visualizer_.DrawBasic2D();
+    visualizer_.draw();
 
 	imgui_.begin();
 
