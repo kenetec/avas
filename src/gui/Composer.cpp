@@ -1,54 +1,64 @@
 #include "Composer.h"
 
+Composer::Composer(PianoRoll* piano_roll) : piano_roll_(piano_roll) {
+    grid_ = Grid(kNumOfRows, kNumOfCol);
+
+	Instrument* instrument = new Instrument("Metronome", R"(C:\Users\heste\source\repos\CS126FA19\fantastic-finale-kenetec\test_resources\metronome)");
+    instrument->Load();
+
+	// initialize score measures
+    for (int row = 0; row < kNumOfCol; row++) {
+        score_.PushMeasureContainer();
+        MeasureContainer* container = score_.GetMeasureContainer(row);
+        
+
+        container->instrument = instrument;
+        std::vector<Measure>* measures = &container->measures;
+		
+		for (int col = kMeasureColStartIndex; col < kNumOfCol; col++) {
+            measures->push_back(Measure());
+        }
+    }
+}
+
 Composer::~Composer() {}
 
-std::vector<std::vector<Measure>>* Composer::GetMeasures() {
-    std::vector<std::vector<Measure>>* score =
-        new std::vector<std::vector<Measure>>;
-
-    for (int instrument_index = 0; instrument_index < measure_buttons_.size(); instrument_index++) {
-        std::vector<Measure> measures;
-        std::vector<MeasureButton> measure_btns = measure_buttons_.at(instrument_index);
-
-        for (int measure_index = 0; measure_index < measure_btns.size(); measure_index++) {
-            MeasureButton measure_btn = measure_btns.at(measure_index);
-            measures.push_back(measure_btn.GetMeasure());
-		}
-
-		score->push_back(measures);
-    }
-
-    return score;
+Score& Composer::GetScore() {
+    return score_;
 }
 
 void Composer::setup() {
-    window_active_ = true;
+    window_active_ = false;
 
-	// sprintf_s usage from: https://stackoverflow.com/questions/28963520/sprintf-command-doesnt-work
-    // populate measures
-    char buffer[100];
+    // sprintf_s usage from:
+    // https://stackoverflow.com/questions/28963520/sprintf-command-doesnt-work
+    // populate MeasureButtons
+    char uid_buffer[100];
     for (int row = 0; row < kNumOfRows; row++) {
+        std::vector<Measure>* measures = &score_.GetMeasureContainer(row)->measures;
         std::vector<MeasureButton> row_vec;
-        for (int col = 1; col < kNumOfCol; col++) {
-            sprintf_s(buffer, sizeof(buffer), "%d.%d", row, col);
 
-            row_vec.push_back(MeasureButton(piano_roll_, buffer));
+        for (int col = kMeasureColStartIndex; col < kNumOfCol; col++) {
+            int measure_index = col - 1;
+            Measure* measure = &measures->at(measure_index);
+            sprintf_s(uid_buffer, sizeof(uid_buffer), "%d.%d", row,
+                      measure_index);
+
+            row_vec.push_back(MeasureButton(uid_buffer, measure, piano_roll_));
         }
         measure_buttons_.push_back(row_vec);
     }
 }
 
 void Composer::draw() {
-    ImGui::SetNextWindowSize(ImVec2(800, 500.0f));
+    ImGui::SetNextWindowSize(kWindowSize);
     ImGui::SetNextWindowPos(ImVec2(0, 0), ImGuiCond_FirstUseEver);
 
     ImGui::Begin("Composer", &window_active_, ImGuiWindowFlags_MenuBar);
 
     {  // set variables
-        canvas_.draw_list = ImGui::GetWindowDrawList();
-        canvas_.pos = ImGui::GetCursorScreenPos();
-        canvas_.size = ImGui::GetContentRegionAvail();
-        canvas_.end_pos = canvas_.pos + canvas_.size;
+        canvas_.Update(ImGui::GetWindowDrawList(), ImGui::GetCursorScreenPos(),
+                       ImGui::GetContentRegionAvail());
 
         vertical_divider_x_offset =
             (canvas_.end_pos.x - canvas_.pos.x) / kNumOfCol;
@@ -58,9 +68,8 @@ void Composer::draw() {
     }
 
     {  // draw
-        DrawBackground();
-        DrawTimeline();
-        DrawLines();
+        DrawMenuBar();
+        grid_.draw(canvas_.draw_list, canvas_.pos, canvas_.size, NULL);
         DrawMeasures();
     }
 
@@ -81,60 +90,38 @@ void Composer::draw() {
     ImGui::End();
 }
 
-/*
-Code derived from: https://github.com/ocornut/imgui#integration
-*/
-void Composer::DrawBackground() {
-    canvas_.draw_list->AddRectFilledMultiColor(
-        canvas_.pos,
-        ImVec2(canvas_.pos.x + canvas_.size.x, canvas_.pos.y + canvas_.size.y),
-        IM_COL32(50, 50, 50, 255), IM_COL32(50, 50, 60, 255),
-        IM_COL32(60, 60, 70, 255), IM_COL32(50, 50, 60, 255));
+void Composer::DrawMenuBar() {
+    if (ImGui::BeginMenuBar()) {
+        if (ImGui::BeginMenu("Edit")) {
+            if (ImGui::MenuItem("Add Instrument")) {
+            }
 
-    canvas_.draw_list->AddRect(
-        canvas_.pos,
-        ImVec2(canvas_.pos.x + canvas_.size.x, canvas_.pos.y + canvas_.size.y),
-        IM_COL32(255, 255, 255, 255));
+            ImGui::EndMenu();
+        }
+
+        ImGui::EndMenuBar();
+    }
 }
 
-void Composer::DrawTimeline() {}
-
-void Composer::DrawLines() {
-    // draw vertical dividers
-    for (int i = 0; i < kNumOfCol; i++) {
-        int x = (vertical_divider_x_offset * i) + canvas_.pos.x;
-        canvas_.draw_list->AddLine(ImVec2(x, canvas_.pos.y),
-                                   ImVec2(x, canvas_.pos.y + canvas_.size.y),
-                                   IM_COL32(255, 255, 255, 100));
-    }
-
-    // draw horizontal dividers
-    for (int i = 0; i < kNumOfRows; i++) {
-        int y = (horizontal_divider_y_offset * i) + canvas_.pos.y;
-        canvas_.draw_list->AddLine(ImVec2(canvas_.pos.x, y),
-                                   ImVec2(canvas_.pos.x + canvas_.size.x, y),
-                                   IM_COL32(255, 255, 255, 100));
+void Composer::DrawInstruments() {
+    for (int row = 0; row < kNumOfRows; row++) {
+        ImVec2 cell_pos = grid_.GetCellRelativePosition(row, 0);
     }
 }
 
 void Composer::DrawMeasures() {
     for (int row = 0; row < kNumOfRows; row++) {
-        for (int col = 1; col < kNumOfCol; col++) {
-            ImVec2 start_pos = ImVec2((vertical_divider_x_offset * col),
-                                      (horizontal_divider_y_offset * row));
-            ImVec2 end_pos = ImVec2(vertical_divider_x_offset * (col + 1),
-                                    horizontal_divider_y_offset * (row + 1)) +
-                             start_pos;
+        for (int col = kMeasureColStartIndex; col < kNumOfCol; col++) {
+            ImVec2 start_pos = grid_.GetCellRelativePosition(row, col);
+            ImVec2 size = grid_.GetCellSize() - ImVec2(2, 2);
+            ImVec2 end_pos = start_pos + size;
 
-            ImVec2 size = ImVec2(vertical_divider_x_offset * (col + 1),
-                                 horizontal_divider_y_offset * (row + 1)) -
-                          start_pos - ImVec2(2, 2);
-
-			ImVec2 cursor_pos = canvas_.pos + start_pos + ImVec2(1, 1);
+            ImVec2 cursor_pos = grid_.GetCellAbsolutePosition(row, col) + ImVec2(1, 1);
             ImGui::SetCursorScreenPos(cursor_pos);
-            
+
 			std::vector<MeasureButton>* row_vec = &measure_buttons_.at(row);
-            MeasureButton* measure_button = &row_vec->at((int)col - 1);
+            MeasureButton* measure_button =
+                &row_vec->at((int)col - kMeasureColStartIndex);
             measure_button->draw(canvas_, cursor_pos, size);
         }
     }

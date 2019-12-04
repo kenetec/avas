@@ -4,6 +4,8 @@ PianoRoll::PianoRoll() { measure_ = nullptr; }
 PianoRoll::~PianoRoll() {}
 
 void PianoRoll::LoadMeasure(Measure& measure) {
+    window_active_ = true;
+
     measure_ = &measure;
 
     // clear
@@ -41,7 +43,7 @@ void PianoRoll::GenerateNoteButtons() {
     }
 }
 
-void PianoRoll::setup() { window_active_ = true; }
+void PianoRoll::setup() { window_active_ = false; }
 
 void PianoRoll::draw() {
     // ImGui::StyleColorsDark();

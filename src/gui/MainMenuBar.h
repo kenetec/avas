@@ -12,4 +12,7 @@ class MainMenuBar {
    public:
     void setup(GuiDrawer& gui_drawer, PlaybackEngine& playback_engine);
     void draw();
+
+   private:
+    void Play();
 };

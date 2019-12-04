@@ -32,17 +32,21 @@ void MainMenuBar::draw() {
 
         if (ImGui::BeginMenu("Playback")) {
             if (ImGui::MenuItem("Play")) {
-                Composer* composer = reinterpret_cast<Composer*>(
-                    gui_drawer_.GetWindow("Composer"));
-
-				std::vector<std::vector<Measure>>* measures = composer->GetMeasures();
-
-				// use playback engine to play song
-                playback_engine_->Play(*measures);
+                Play();
             }
             ImGui::EndMenu();
         }
         
 		ImGui::EndMainMenuBar();
     }
+}
+
+void MainMenuBar::Play() {
+    Composer* composer =
+        reinterpret_cast<Composer*>(gui_drawer_.GetWindow("Composer"));
+
+    Score score = composer->GetScore();
+
+    // use playback engine to play song
+    playback_engine_->Play(score);
 }

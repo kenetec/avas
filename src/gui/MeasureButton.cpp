@@ -1,13 +1,14 @@
 #include "MeasureButton.h"
 
-MeasureButton::MeasureButton(PianoRoll* piano_roll, std::string name)
-    : piano_roll_(piano_roll), name_(name) {
-    measure_ = Measure(TimeSignature{4, NoteType::QUARTER});
+MeasureButton::MeasureButton(const std::string& uid, Measure* measure, PianoRoll* piano_roll)
+    : uid_(uid), measure_(measure), piano_roll_(piano_roll) {
 }
 
 void MeasureButton::draw(Canvas& canvas, ImVec2 start_pos, ImVec2 size) {
-    if (ImGui::InvisibleButton(name_.c_str(), size)) {
-        piano_roll_->LoadMeasure(measure_);
+    if (ImGui::InvisibleButton(uid_.c_str(), size)) {
+        if (measure_ != nullptr) {
+            piano_roll_->LoadMeasure(*measure_);
+        }
     }
 }
 

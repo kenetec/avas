@@ -7,21 +7,21 @@
 
 class MeasureButton {
    private:
-    Measure measure_;
+    Measure* measure_ = nullptr;
     bool active_ = false;
     ImU32 color_;
-    std::string name_;
-    PianoRoll* piano_roll_;
+    std::string uid_;
+    PianoRoll* piano_roll_ = nullptr;
 
    public:
-    MeasureButton(PianoRoll* piano_roll, std::string name);
+    MeasureButton(const std::string& uid, Measure* measure, PianoRoll* piano_roll);
     void draw(Canvas& canvas, ImVec2 start_pos, ImVec2 size);
 
-	void SetMeasure(Measure& measure) { measure_ = measure; };
-    Measure& GetMeasure() { return measure_; };
+	void SetMeasure(Measure* measure) { measure_ = measure; };
+    Measure* GetMeasure() { return measure_; };
 
-	void SetName(std::string& name) { name_ = name; };
-    std::string GetName() { return name_; };
+	void SetUID(std::string& name) { uid_ = name; };
+    std::string GetUID() { return uid_; };
 	
 	private:
     void DrawBackgroundNotes(Canvas& canvas, ImVec2 start_pos, ImVec2 size);
