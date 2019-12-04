@@ -23,7 +23,7 @@ class Instrument {
     std::vector<OctaveMap> sound_map_;
 
     SoundLoader sound_loader_;
-    std::vector<Measure> measures_;
+    std::vector<Measure>* measures_;
 
 	const std::string kAllOctavesKey = "_";
     const std::string kAllNotesKey = "+";
@@ -31,15 +31,42 @@ class Instrument {
     
 
    public:
+    Instrument();
+    Instrument(const std::string& name);
     Instrument(const std::string& name, const std::string& path_to_instrument);
-    void GenerateSoundMap();
+    Instrument(const std::string& name, const std::string& path_to_instrument,
+               std::vector<Measure>* measures);
 
+	/*
+	Loads sound_map from set path to instrument.
+	*/
+    void Load();
+
+	// Gets mapped sound from given NoteName and octave.
+	ofSoundPlayer* GetSound(const std::string& note_name_str, int octave);
+
+	/*
+	Sets instrument path.
+	*/
+    void SetInstrumentPath(const std::string& path_to_instrument);
+
+	/*
+	Sets name of instrument
+	*/
 	void SetName(const std::string& name);
+
+	/*
+	Gets name of instrument
+	*/
 	std::string& GetName();
 
+	/*
+	Gets sound map
+	*/
 	std::vector<OctaveMap>& GetSoundMap();
 
    //private:
+    void InitializeSoundMap();
     void LoadSoundMapFile();
     bool SoundMapFileIsValid(const ofJson& json_obj);
     void LoadSoundMapIntoObject(const ofJson& json_obj);

@@ -1,12 +1,28 @@
 #include "Instrument.h"
 
+Instrument::Instrument() : Instrument("", "", nullptr) {}
+
+Instrument::Instrument(const std::string& name)
+    : Instrument(name, "", nullptr) {}
+
 Instrument::Instrument(const std::string& name,
                        const std::string& path_to_instrument)
-    : name_(name), root_path_(path_to_instrument) {
+    : Instrument(name, path_to_instrument, nullptr) {}
+
+Instrument::Instrument(const std::string& name,
+                       const std::string& path_to_instrument,
+                       std::vector<Measure>* measures) {
+    InitializeSoundMap();
+    measures_ = measures;
+    root_path_ = path_to_instrument;
+}
+
+void Instrument::InitializeSoundMap() {
     for (int octave = 0; octave < Instrument::kMaxOctaves; octave++) {
         OctaveMap octave_map;
 
-        for (int note_index = 0; note_index < Instrument::kNotesPerOctaves; note_index++) {
+        for (int note_index = 0; note_index < Instrument::kNotesPerOctaves;
+             note_index++) {
             octave_map.insert(std::pair<std::string, ofSoundPlayer*>(
                 kNoteNames.at(note_index), nullptr));
         }
@@ -15,9 +31,28 @@ Instrument::Instrument(const std::string& name,
     }
 }
 
-void Instrument::GenerateSoundMap() { LoadSoundMapFile(); }
+void Instrument::Load() { LoadSoundMapFile(); }
 
-std::vector<OctaveMap>& Instrument::GetSoundMap() {
+ofSoundPlayer* Instrument::GetSound(const std::string& note_name_str, int octave) {
+    if (!sound_map_.empty()) {
+        if (std::find(kNoteNames.cbegin(), kNoteNames.cend(), note_name_str) !=
+            kNoteNames.cend()) {
+            return sound_map_.at(octave).at(note_name_str);
+        } else {
+            stringstream ss;
+            ss << "Note name: \"" << note_name_str << "\" does not exist!";
+
+            throw exception(ss.str().c_str());
+		}
+    }
+    return nullptr;
+}
+
+void Instrument::SetInstrumentPath(const std::string& path) {
+    root_path_ = path;
+}
+
+    std::vector<OctaveMap>& Instrument::GetSoundMap() {
     return sound_map_;
 }
 
@@ -100,7 +135,7 @@ void Instrument::SetNotesInOctaveToMapping(int octave, const ofJson& json_obj) {
         } else {
             (*sound_player)->unloadSound();
             (*sound_player)->loadSound(path);
-        }        
+        }
     }
 }
 
@@ -113,14 +148,13 @@ void Instrument::SetNotesInAllOctavesToMapping(const ofJson& json_obj) {
 void Instrument::SetAllNotesToSound(
     const std::string& relative_sound_file_path) {
     for (int octave = 0; octave < sound_map_.size(); octave++) {
-        OctaveMap* octave_sound_map =
-            &sound_map_.at(octave);
+        OctaveMap* octave_sound_map = &sound_map_.at(octave);
 
         for (auto it = octave_sound_map->begin(); it != octave_sound_map->end();
              it++) {
             std::string path = ResolvePath(relative_sound_file_path);
 
-			if (it->second == nullptr) {
+            if (it->second == nullptr) {
                 it->second = sound_loader_.GetSoundPlayer(path);
             } else {
                 it->second->unloadSound();

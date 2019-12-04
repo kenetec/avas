@@ -1,6 +1,6 @@
 #pragma once
-#include <vector>
 #include <string>
+#include <vector>
 
 enum class NoteType {
     SIXTEENTH,
@@ -10,12 +10,11 @@ enum class NoteType {
     WHOLE,
 };
 
-enum class NoteName { C, Db, D, Eb, E, F, Gb, G, Ab, A, Bb, B };
-
 struct Note {
-    NoteType note_type;
-    NoteName note_name;
+    //NoteType note_type;
     std::string note_name_str;
     int octave;
     bool active = false;
+
+    Note(std::string note_name_str, int octave) : note_name_str(note_name_str), octave(octave) {};
 };

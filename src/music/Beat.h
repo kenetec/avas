@@ -12,4 +12,6 @@ class Beat {
     std::vector<Note> notes_;
     const int kNotesPerOctaves = 12;
     const int kMaxOctaves = 6;
+    const std::vector<std::string> kNoteNames = {
+        "C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B"};
 };

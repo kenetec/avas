@@ -6,6 +6,7 @@ ofSoundPlayer* SoundLoader::AddSound(std::string file_path) {
     if (file_path.empty()) return nullptr;
 
     ofSoundPlayer sound_player;
+    sound_player.setMultiPlay(true);
     sound_player.loadSound(file_path);
 
     paths_to_sound_players.insert(
