@@ -133,6 +133,15 @@
     <ClCompile Include="src\gui\Grid.cpp">
       <Filter>src\gui</Filter>
     </ClCompile>
+    <ClCompile Include="src\UserSession.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gui\InstrumentButton.cpp">
+      <Filter>src\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\music\MeasurePlayer.cpp">
+      <Filter>src\music</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -191,6 +200,15 @@
     </Filter>
     <Filter Include="test_resources\metronome">
       <UniqueIdentifier>{6ac5d612-8f09-4bfc-90fa-99d5bf2971f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\shaders">
+      <UniqueIdentifier>{59aee5b5-ca7f-4c74-b268-2d255dfe2f94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\shaders\test_shader">
+      <UniqueIdentifier>{5be65466-fabd-4a39-a851-6d0d274db164}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\live">
+      <UniqueIdentifier>{cd037849-5f8c-4d53-87ed-8dddfb981a60}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -335,6 +353,15 @@
     <ClInclude Include="src\gui\Grid.h">
       <Filter>src\gui</Filter>
     </ClInclude>
+    <ClInclude Include="src\UserSession.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gui\InstrumentButton.h">
+      <Filter>src\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\music\MeasurePlayer.h">
+      <Filter>src\music</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
@@ -357,6 +384,12 @@
     </None>
     <None Include="test_resources\metronome\SOUND_MAP.json">
       <Filter>test_resources\metronome</Filter>
+    </None>
+    <None Include="src\shaders\test_shader\test_shader.frag">
+      <Filter>src\shaders\test_shader</Filter>
+    </None>
+    <None Include="src\shaders\test_shader\test_shader.vert">
+      <Filter>src\shaders\test_shader</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
