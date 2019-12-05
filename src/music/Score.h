@@ -3,7 +3,7 @@
 #include <vector>
 #include "Instrument.h"
 
-struct MeasureContainer {
+struct InstrumentScore {
     Instrument* instrument;
     std::vector<Measure> measures;
 };
@@ -16,7 +16,7 @@ class Score {
     static const int kMaxMeasures = 5;
 
    private:
-    std::vector<MeasureContainer> measure_containers_;
+    std::vector<InstrumentScore> measure_containers_;
     int bpm_ = 120;
 
    public:
@@ -35,9 +35,9 @@ class Score {
     void InsertMeasureContainer(int index){};
     void RemoveMeasureContainer(int index){};
 
-    MeasureContainer* GetMeasureContainer(int index);
+    InstrumentScore* GetMeasureContainer(int index);
 
-    std::vector<MeasureContainer>& GetMeasureContainers();
+    std::vector<InstrumentScore>& GetMeasureContainers();
     void SetBPM(int bpm_);
     int GetBPM();
 };

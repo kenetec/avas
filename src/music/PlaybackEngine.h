@@ -4,7 +4,7 @@
 #include <math.h>
 #include "Score.h"
 #include "SoundLoader.h"
-#include "MeasurePlayer.h"
+#include "InstrumentScorePlayer.h"
 
 enum class PlaybackEngineState { PLAYING, STOPPED, PAUSED };
 
@@ -12,12 +12,13 @@ class PlaybackEngine {
    private:
     PlaybackEngineState state_;
     Score score_;
-    SoundLoader* sound_loader_;
+    SoundLoader* sound_loader_ = nullptr;
     double ms_between_beats_ = 0;
-	MeasurePlayer measure_player;
+    std::vector<std::shared_ptr<InstrumentScorePlayer>> instrument_score_players_;
 
    public:
     PlaybackEngine(){};
+    ~PlaybackEngine();
 
     void Load(Score& score){};
     void Load(std::vector<std::vector<Measure>>& measures);

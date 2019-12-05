@@ -3,19 +3,20 @@
 Composer::Composer(PianoRoll* piano_roll) : piano_roll_(piano_roll) {
     grid_ = Grid(kNumOfRows, kNumOfCol);
 
-	Instrument* instrument = new Instrument("Metronome", R"(C:\Users\heste\source\repos\CS126FA19\fantastic-finale-kenetec\test_resources\metronome)");
+    Instrument* instrument = new Instrument(
+        "Metronome",
+        R"(C:\Users\heste\source\repos\CS126FA19\fantastic-finale-kenetec\test_resources\metronome)");
     instrument->Load();
 
-	// initialize score measures
-    for (int row = 0; row < kNumOfCol; row++) {
+    // initialize score measures
+    for (int row = 0; row < kNumOfRows; row++) {
         score_.PushMeasureContainer();
-        MeasureContainer* container = score_.GetMeasureContainer(row);
-        
+        InstrumentScore* container = score_.GetMeasureContainer(row);
 
         container->instrument = instrument;
         std::vector<Measure>* measures = &container->measures;
-		
-		for (int col = kMeasureColStartIndex; col < kNumOfCol; col++) {
+
+        for (int col = kMeasureColStartIndex; col < kNumOfCol; col++) {
             measures->push_back(Measure());
         }
     }
@@ -23,9 +24,7 @@ Composer::Composer(PianoRoll* piano_roll) : piano_roll_(piano_roll) {
 
 Composer::~Composer() {}
 
-Score& Composer::GetScore() {
-    return score_;
-}
+Score& Composer::GetScore() { return score_; }
 
 void Composer::setup() {
     window_active_ = false;
@@ -35,7 +34,8 @@ void Composer::setup() {
     // populate MeasureButtons
     char uid_buffer[100];
     for (int row = 0; row < kNumOfRows; row++) {
-        std::vector<Measure>* measures = &score_.GetMeasureContainer(row)->measures;
+        std::vector<Measure>* measures =
+            &score_.GetMeasureContainer(row)->measures;
         std::vector<MeasureButton> row_vec;
 
         for (int col = kMeasureColStartIndex; col < kNumOfCol; col++) {
@@ -116,10 +116,11 @@ void Composer::DrawMeasures() {
             ImVec2 size = grid_.GetCellSize() - ImVec2(2, 2);
             ImVec2 end_pos = start_pos + size;
 
-            ImVec2 cursor_pos = grid_.GetCellAbsolutePosition(row, col) + ImVec2(1, 1);
+            ImVec2 cursor_pos =
+                grid_.GetCellAbsolutePosition(row, col) + ImVec2(1, 1);
             ImGui::SetCursorScreenPos(cursor_pos);
 
-			std::vector<MeasureButton>* row_vec = &measure_buttons_.at(row);
+            std::vector<MeasureButton>* row_vec = &measure_buttons_.at(row);
             MeasureButton* measure_button =
                 &row_vec->at((int)col - kMeasureColStartIndex);
             measure_button->draw(canvas_, cursor_pos, size);

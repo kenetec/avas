@@ -27,14 +27,14 @@ void Score::PushMeasureContainer(std::vector<Measure>& measures) {
 }
 
 void Score::PushMeasureContainer(Instrument* instrument, std::vector<Measure>& measures) {
-    MeasureContainer measure_container;
+    InstrumentScore measure_container;
     measure_container.instrument = instrument;
     measure_container.measures = measures;
 
     measure_containers_.push_back(measure_container);
 }
 
-MeasureContainer* Score::GetMeasureContainer(int index) {
+InstrumentScore* Score::GetMeasureContainer(int index) {
     if (index > -1 && index < measure_containers_.size()) {
         return &measure_containers_.at(index);
     }
@@ -44,7 +44,7 @@ MeasureContainer* Score::GetMeasureContainer(int index) {
     throw ss.str();
 }
 
-std::vector<MeasureContainer>& Score::GetMeasureContainers() {
+std::vector<InstrumentScore>& Score::GetMeasureContainers() {
     return measure_containers_;
 }
 

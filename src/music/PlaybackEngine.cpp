@@ -1,28 +1,23 @@
 #include "PlaybackEngine.h"
 
+PlaybackEngine::~PlaybackEngine() {}
+
 void PlaybackEngine::Load(std::vector<std::vector<Measure>>& measures) {}
 
 void PlaybackEngine::Play(Score& score) {
     CalculateTimeBetweenBeats();
 
-    std::vector<MeasureContainer> measure_containers_ =
-        score.GetMeasureContainers();
+    std::vector<InstrumentScore> measure_containers_ = score.GetMeasureContainers();
 
     for (int measure_container_index = 0; measure_container_index < measure_containers_.size(); measure_container_index++) {
-        MeasureContainer measure_container = measure_containers_.at(measure_container_index);
-        Instrument* instrument = measure_container.instrument;
-        std::vector<Measure> measures = measure_container.measures;
+        InstrumentScore instrument_score = measure_containers_.at(measure_container_index);
+        std::shared_ptr<InstrumentScorePlayer> instrument_score_player =
+            std::shared_ptr<InstrumentScorePlayer>(new InstrumentScorePlayer());
 
-		if (instrument != nullptr) {
-            for (int measure_index = 0; measure_index < measures.size();
-                 measure_index++) {
-                Measure measure = measures.at(measure_index);
-                measure_player.setup(measure, instrument, ms_between_beats_);
+		instrument_score_players_.push_back(instrument_score_player);
 
-                measure_player.startThread();
-                measure_player.waitForThread();
-            }
-        }
+        instrument_score_player->setup(instrument_score, ms_between_beats_);
+        instrument_score_player->startThread();
     }
 }
 
