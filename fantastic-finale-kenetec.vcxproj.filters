@@ -142,6 +142,9 @@
     <ClCompile Include="src\music\MeasurePlayer.cpp">
       <Filter>src\music</Filter>
     </ClCompile>
+    <ClCompile Include="src\music\InstrumentScorePlayer.cpp">
+      <Filter>src\music</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -360,6 +363,9 @@
       <Filter>src\gui</Filter>
     </ClInclude>
     <ClInclude Include="src\music\MeasurePlayer.h">
+      <Filter>src\music</Filter>
+    </ClInclude>
+    <ClInclude Include="src\music\InstrumentScorePlayer.h">
       <Filter>src\music</Filter>
     </ClInclude>
   </ItemGroup>

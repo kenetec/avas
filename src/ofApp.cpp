@@ -36,7 +36,7 @@ void ofApp::update() {
 }
 
 void ofApp::draw() {
-    visualizer_.draw();
+    visualizer_.DrawBasic2D();
 
 	imgui_.begin();
 

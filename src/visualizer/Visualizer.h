@@ -17,6 +17,7 @@ class Visualizer {
 
     ofShader shader_;
     ofFbo scene_;
+    ofVboMesh mesh_;
    public:
     Visualizer();
     void setup();

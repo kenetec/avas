@@ -218,6 +218,7 @@
     <ClCompile Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxImGui\libs\imgui\src\imgui_widgets.cpp" />
     <ClCompile Include="src\music\Beat.cpp" />
     <ClCompile Include="src\music\Instrument.cpp" />
+    <ClCompile Include="src\music\InstrumentScorePlayer.cpp" />
     <ClCompile Include="src\music\Measure.cpp" />
     <ClCompile Include="src\music\MeasurePlayer.cpp" />
     <ClCompile Include="src\music\PlaybackEngine.cpp" />
@@ -287,6 +288,7 @@
     <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxUnitTests\src\ofxUnitTests.h" />
     <ClInclude Include="src\music\Beat.h" />
     <ClInclude Include="src\music\Instrument.h" />
+    <ClInclude Include="src\music\InstrumentScorePlayer.h" />
     <ClInclude Include="src\music\Measure.h" />
     <ClInclude Include="src\music\MeasurePlayer.h" />
     <ClInclude Include="src\music\Note.h" />

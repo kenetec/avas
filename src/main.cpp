@@ -6,23 +6,47 @@
 // TODO: UPDATE PROPOSAL.md
 
 /*
+- DONE: REVAMP MUSIC STRUCTURE
+-- DONE: MUST REWRITE INSTRUMENT CLASS
+- DONE: Make playback engine play notes!!!!
+-- SOUND IS NOW HERE BABY
+
+
 TODOS (top = highest priority)
 ===============================
-- DONE: REVAMP MUSIC STRUCTURE X
--- MUST REWRITE INSTRUMENT CLASS
-- Make playback engine play notes!!!!
-- Make MeasureButton show notes that were selected in a minature(also show selection box).
 - VISUALS!!!!!!
-	- Some 3D shapes would be gucci.
-	- 3D particles that pulse.
-	- Fractals?
+	- MAKE SOMETHING INTERESTING AT THE VERY LEAST
+    - Some 3D shapes would be gucci.
+    - 3D particles that pulse.
+    - Fractals?
+
+- CREATE SAMPLE INSTRUMENTS
+    - Synth
+    - Bass
+    - Piano
+    - yeh
+
+- Make MeasureButton show notes that were selected in a minature(also show selection box).
+
 - TESTS!!!!!
-	- All of the classes in ./music need to be tested.
-	- NoteButton and MeasureButton need to be tested.
+	- /music
+		- ScoreTest
+		- PlaybackEngineTest
+		- MeasurePlayerTest
+	- /gui
+		- NoteButton
+		- MeasureButton
+
 - Saving & Loading
 ========= FINISH LINE =========
-- LIVE MODE
+- LIVE MODE (THE INITIAL IDEA BUT I ACTUALLY CAN FIGURE OUT A WAY TO DO IT)
+	- KEYBOARD MAPPER
+	- TIMELINE SCROLLER
+	- TIME NOTIFIER
+	- NOTE PLACER
+
 - Make GUI look nice
+- ...
 - Tackle stretch goals
 */
 

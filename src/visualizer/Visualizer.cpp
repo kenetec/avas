@@ -11,10 +11,6 @@ void Visualizer::setup() {
     LoadShaders();
 }
 
-/*
-Code derived from:
-https://www.youtube.com/watch?v=IiTsE7P-GDs&list=PL4neAtv21WOmrV8z9rSzL20QpdLU1zJLr&index=37&t=481s
-*/
 void Visualizer::update() { UpdateFFT(); }
 
 void Visualizer::DrawBasic2D() {
@@ -35,28 +31,37 @@ code derived from:
 https://openframeworks.cc/ofBook/chapters/shaders.html
 */
 void Visualizer::draw() {
-    // shader_.begin();
+    shader_.begin();
 
-    /*for (int band_index = 0; band_index < kNumOfBands; band_index+=13) {
-    int height = -(fftSmoothed_[band_index] * 100);
+	int x_offset = 10;  // ofGetWidth() / kNumOfBands;
+    int y_pos = ofGetHeight() / 2;
+    int x_size = ofGetWidth() / kNumOfBands;
 
-    shader_.setUniform1f("time", ofGetElapsedTimef());
-    shader_.setUniform1f("height", height);
+    for (int band_index = 0; band_index < kNumOfBands; band_index += 13) {
+        int height = -(fftSmoothed_[band_index] * 100);
 
-            // translate plane into center screen.
-    float tx = ofGetWidth() / 2;
-    float ty = ofGetHeight() / 2;
-    ofTranslate(tx, ty);
+        shader_.setUniform1f("time", ofGetElapsedTimef());
 
-    // the mouse/touch Y position changes the rotation of the plane.
-    float percentY = ofGetPreviousMouseY() / (float)ofGetHeight();
-    float rotation = ofMap(percentY, 0, 1, -60, 60, true) + 60;
-    ofRotate(rotation, 1, 0, 0);
+        ofPushMatrix();
+        { 
+			ofDrawBox(glm::vec3(x_offset * band_index, 500, -20), 10, height, 100);
+		}
+        ofPopMatrix();
 
-    plane_.drawWireframe();
-    }*/
+        // translate plane into center screen.
+        /*float tx = ofGetWidth() / 2;
+        float ty = ofGetHeight() / 2;
+        ofTranslate(tx, ty);
 
-    // shader_.end();
+        // the mouse/touch Y position changes the rotation of the plane.
+        float percentY = ofGetPreviousMouseY() / (float)ofGetHeight();
+        float rotation = ofMap(percentY, 0, 1, -60, 60, true) + 60;
+        ofRotate(rotation, 1, 0, 0);
+
+        plane_.drawWireframe();*/
+    }
+
+    shader_.end();
 }
 
 void Visualizer::InitializeFFT() {
@@ -70,6 +75,10 @@ void Visualizer::LoadShaders() {
     shader_.load(kShaderVertPath, kShaderFragPath);
 }
 
+/*
+Code derived from:
+https://www.youtube.com/watch?v=IiTsE7P-GDs&list=PL4neAtv21WOmrV8z9rSzL20QpdLU1zJLr&index=37&t=481s
+*/
 void Visualizer::UpdateFFT() {
     float* value = ofSoundGetSpectrum(kNumOfBands);
 
