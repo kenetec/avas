@@ -50,5 +50,7 @@
 
 # Week 4 🥵
 ### 12/4/19
-- SOUND!!! 🎉🎊🎉
-- 
+- 🎉SOUND!!!🎉
+### 12/5/19
+- Fixed playback bug where window would freeze to wait for playback to finish.
+- Added multi-instrumental playback support.
