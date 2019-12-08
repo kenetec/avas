@@ -145,6 +145,9 @@
     <ClCompile Include="src\music\InstrumentScorePlayer.cpp">
       <Filter>src\music</Filter>
     </ClCompile>
+    <ClCompile Include="src\visualizer\TailCircle.cpp">
+      <Filter>src\visualizer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -183,9 +186,6 @@
     <Filter Include="addons\ofxUnitTests\src">
       <UniqueIdentifier>{6DB6A1EA-29BB-7859-928B-898A}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\visualizer">
-      <UniqueIdentifier>{2e388505-b550-447d-b611-52460838e7fa}</UniqueIdentifier>
-    </Filter>
     <Filter Include="tests">
       <UniqueIdentifier>{3a083d9c-0f65-4a8b-9d05-05e0856e5aed}</UniqueIdentifier>
     </Filter>
@@ -212,6 +212,9 @@
     </Filter>
     <Filter Include="src\live">
       <UniqueIdentifier>{cd037849-5f8c-4d53-87ed-8dddfb981a60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\visualizer">
+      <UniqueIdentifier>{2e388505-b550-447d-b611-52460838e7fa}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -367,6 +370,9 @@
     </ClInclude>
     <ClInclude Include="src\music\InstrumentScorePlayer.h">
       <Filter>src\music</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visualizer\TailCircle.h">
+      <Filter>src\visualizer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

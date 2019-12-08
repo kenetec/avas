@@ -10,6 +10,9 @@ void ofApp::setup() {
     ofSetWindowTitle("AVAS");
     ofSoundStreamSetup(kDefaultOutputStreams, kDefaultInputStreams);
 
+    // ripped from: serious-snakes assignment
+    srand(static_cast<unsigned>(time(0)));
+
 	imgui_.setup();
     gui_drawer_.setup();
     main_menu_bar_.setup(gui_drawer_, playback_engine_);
@@ -20,7 +23,7 @@ void ofApp::setup() {
     //sound_loader_.GetSoundPlayer("metronome_sound");
 
     sound_player.loadSound(
-        R"(C:\Users\heste\source\repos\CS126FA19\fantastic-finale-kenetec\resources\waves.mp3)");
+        R"(C:\Users\heste\source\repos\CS126FA19\fantastic-finale-kenetec\resources\bucket_list.mp3)");
 
     sound_player_2.loadSound(
         R"(C:\Users\heste\source\repos\CS126FA19\fantastic-finale-kenetec\resources\Loop Cult - Unit 808 Sample Pack\LCU_808_samples\LCU_808_drum kits\LCU_808_drum kit 01\LCU_808_DKit_01_Crash.wav)");
@@ -36,6 +39,7 @@ void ofApp::update() {
 }
 
 void ofApp::draw() {
+    visualizer_.draw();
     visualizer_.DrawBasic2D();
 
 	imgui_.begin();

@@ -19,9 +19,9 @@ ofSoundPlayer* SoundLoader::GetSoundPlayer(std::string file_path) {
     if (paths_to_sound_players.find(file_path) !=
         paths_to_sound_players.cend()) {
         return &paths_to_sound_players.at(file_path);
-    } else {
-        return AddSound(file_path);
     }
+
+    return AddSound(file_path);
 }
 
 void SoundLoader::DeleteSound(std::string file_path) {

@@ -54,3 +54,9 @@
 ### 12/5/19
 - Fixed playback bug where window would freeze to wait for playback to finish.
 - Added multi-instrumental playback support.
+### 12/6/18
+- Added mp3 files to resources.
+### 12/7/19
+- Created TailCircle.
+### 12/8/19
+- Updated PROPOSAL.md (with approval).

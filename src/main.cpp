@@ -15,7 +15,7 @@
 TODOS (top = highest priority)
 ===============================
 - VISUALS!!!!!!
-	- MAKE SOMETHING INTERESTING AT THE VERY LEAST
+	- MUST FIND IMPULSE
     - Some 3D shapes would be gucci.
     - 3D particles that pulse.
     - Fractals?
@@ -41,9 +41,10 @@ TODOS (top = highest priority)
 ========= FINISH LINE =========
 - LIVE MODE (THE INITIAL IDEA BUT I ACTUALLY CAN FIGURE OUT A WAY TO DO IT)
 	- KEYBOARD MAPPER
-	- TIMELINE SCROLLER
-	- TIME NOTIFIER
-	- NOTE PLACER
+	- USE COMPOSER AND PIANO ROLL FOR GUI
+    - MAKE BETTER PIANO ROLL LOL
+    - ADD KEYBOARD GESTURES TO MANIPULATE PLAY CURSOR
+    - EACH INSTRUMENT SCORE HAS IT'S OWN PLAY CURSOR
 
 - Make GUI look nice
 - ...

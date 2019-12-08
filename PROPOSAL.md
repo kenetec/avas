@@ -1,8 +1,8 @@
 <!-- Write your proposal here! Make sure to use properly-formatted Markdown! -->
-# Audio Visualizer and Sound Board
+# Music Maker/Visualizer
 
-For my final project, I will create an interface for the user to map different sounds to the keyboard
-and when a mapped key is pressed, it plays the audio and creates interesting visuals on the screen.
+For my final project, I will create an interface for the user to place notes on a gui, which when played,
+creates interesting visuals on the screen.
 The user will be able to create full length songs with multiple channels mixing and be able save and
 replay these runs.
 
@@ -23,10 +23,10 @@ allowing the user to quickly come up with musical ideas.
 - [bento4](https://www.bento4.com/) (for exporting to MP4)
 
 ## Roadmap
-- Week 1: Basic sound board and visuals completed
-- Week 2: Implement channels, timing/quantization, metronome, keyboard gestures
-- Week 3: More fleshed out keyboard interactions / saving and loading
-- Week 4: Prettier visuals
+- Week 1: Basic visuals
+- Week 2: Develop GUI
+- Week 3: Prettier visuals
+- Week 4: Saving and loading
 
 ## Stretch Goals
 - Exporting to MP3/WAV/MP4

@@ -124,6 +124,7 @@
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <ObjectFileName>$(IntDir)</ObjectFileName>
+      <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -166,6 +167,7 @@
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;src\gui;..\..\..\..\Desktop\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxGui\src;..\..\..\..\Desktop\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxImGui\libs;..\..\..\..\Desktop\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxImGui\libs\imgui;..\..\..\..\Desktop\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxImGui\libs\imgui\src;..\..\..\..\Desktop\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxImGui\src;..\..\..\..\Desktop\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxUnitTests\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <ObjectFileName>$(IntDir)</ObjectFileName>
+      <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
@@ -226,6 +228,7 @@
     <ClCompile Include="src\music\SoundLoader.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="src\UserSession.cpp" />
+    <ClCompile Include="src\visualizer\TailCircle.cpp" />
     <ClCompile Include="src\visualizer\Visualizer.cpp" />
     <ClCompile Include="tests\BeatTest.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
@@ -297,6 +300,7 @@
     <ClInclude Include="src\music\SoundLoader.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\UserSession.h" />
+    <ClInclude Include="src\visualizer\TailCircle.h" />
     <ClInclude Include="src\visualizer\Visualizer.h" />
   </ItemGroup>
   <ItemGroup>
