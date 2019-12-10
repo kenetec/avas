@@ -60,3 +60,10 @@
 - Created TailCircle.
 ### 12/8/19
 - Updated PROPOSAL.md (with approval).
+- Add Particle class.
+- Create Util class.
+- Create BassCircle class.
+- Add music
+### 12/9/19
+- Add music
+- Delete TailCircle

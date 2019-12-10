@@ -145,7 +145,16 @@
     <ClCompile Include="src\music\InstrumentScorePlayer.cpp">
       <Filter>src\music</Filter>
     </ClCompile>
-    <ClCompile Include="src\visualizer\TailCircle.cpp">
+    <ClCompile Include="src\visualizer\Particle.cpp">
+      <Filter>src\visualizer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\visualizer\ParticleGenerator.cpp">
+      <Filter>src\visualizer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\visualizer\BassCircle.cpp">
+      <Filter>src\visualizer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\visualizer\Util.cpp">
       <Filter>src\visualizer</Filter>
     </ClCompile>
   </ItemGroup>
@@ -371,7 +380,19 @@
     <ClInclude Include="src\music\InstrumentScorePlayer.h">
       <Filter>src\music</Filter>
     </ClInclude>
-    <ClInclude Include="src\visualizer\TailCircle.h">
+    <ClInclude Include="src\visualizer\Particle.h">
+      <Filter>src\visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visualizer\ParticleGenerator.h">
+      <Filter>src\visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visualizer\BassCircle.h">
+      <Filter>src\visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visualizer\Util.h">
+      <Filter>src\visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visualizer\ReactiveObject.h">
       <Filter>src\visualizer</Filter>
     </ClInclude>
   </ItemGroup>

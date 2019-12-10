@@ -228,7 +228,10 @@
     <ClCompile Include="src\music\SoundLoader.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="src\UserSession.cpp" />
-    <ClCompile Include="src\visualizer\TailCircle.cpp" />
+    <ClCompile Include="src\visualizer\BassCircle.cpp" />
+    <ClCompile Include="src\visualizer\Particle.cpp" />
+    <ClCompile Include="src\visualizer\ParticleGenerator.cpp" />
+    <ClCompile Include="src\visualizer\Util.cpp" />
     <ClCompile Include="src\visualizer\Visualizer.cpp" />
     <ClCompile Include="tests\BeatTest.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
@@ -300,7 +303,11 @@
     <ClInclude Include="src\music\SoundLoader.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\UserSession.h" />
-    <ClInclude Include="src\visualizer\TailCircle.h" />
+    <ClInclude Include="src\visualizer\BassCircle.h" />
+    <ClInclude Include="src\visualizer\Particle.h" />
+    <ClInclude Include="src\visualizer\ParticleGenerator.h" />
+    <ClInclude Include="src\visualizer\ReactiveObject.h" />
+    <ClInclude Include="src\visualizer\Util.h" />
     <ClInclude Include="src\visualizer\Visualizer.h" />
   </ItemGroup>
   <ItemGroup>
