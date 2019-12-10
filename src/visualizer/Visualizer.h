@@ -1,15 +1,12 @@
 #pragma once
 #include <math.h>
 #include <ofMain.h>
-#include "TailCircle.h"
 
+#include "BassCircle.h"
+#include "Particle.h"
+#include "Util.h"
 
-struct Range {
-    int low = 0;
-    int high = 0;
-    int dist = 0;
-    Range(int l, int h) : low(l), high(h), dist(h - l){};
-};
+using ParticlePointer = std::shared_ptr<Particle*>;
 
 class Visualizer {
    private:
@@ -23,20 +20,26 @@ class Visualizer {
     */
     float* fft_smoothed_ = nullptr;
     const float kFFTDampingFactor = 0.9f;
-    const int kNumOfBands = 512;
-
-    const Range kBassFFTRange = Range(0, 5);
-    const int kBassRadiusFactor = 60;
-    const double kBassRadiusDampingFactor = 0.9;
-    const double kBassFFTIgnoreFraction = 0.5;
-    //const double kBassFFTThreshold = 0.2;
-    int bass_radius_ = 0;
 
     ofShader shader_;
     ofFbo scene_;
     ofVboMesh mesh_;
 
+    //std::vector<std::shared_ptr<ofRectangle>> bars_;
+    std::vector<ofColor> bar_colors_;
+    std::vector<ofRectangle> bars_;
+
+    BassCircle bass_circle_;
+    std::vector<Particle> particles_;
+    const int kMaxNumOfParticles = 10;
+    const int kParticleFFTRangeDist = 20;
+
+    ofColor start_color_ = ofColor(138, 249, 255);
+    ofColor end_color_ = ofColor(240, 140, 255);
+
    public:
+    static const int kNumOfBands = 512;
+
     Visualizer();
     void setup();
     void update();
@@ -47,44 +50,10 @@ class Visualizer {
     // setup
     void InitializeFFT();
     void LoadShaders();
+    void SetupParticles();
+    void SetupBars();
     // update
     void UpdateFFT();
     void UpdateBassRadius();
     // draw
-
-    // helpers
-
-    /*
-        Get average band value within a range of a to b (a inclusive, b
-       exclusive).
-    */
-    double GetAverageBandValue(int a, int b);
-    double GetAverageBandValue(const Range& range);
-    int GetAverageBandValueFloored(int a, int b);
-    int GetAverageBandValueFloored(const Range& range);
-
-    /*
-        Gets average band value withing range of a to b (a inclusive, b
-       exclusive)
-       Ignores values under [highest value] * [ignore_factor]
-    */
-    double GetSignificantBandsAverage(int a, int b, double ignore_factor);
-    double GetSignificantBandsAverage(const Range& range, double ignore_factor);
-    int GetSignificantBandsAverageFloored(int a, int b, double ignore_factor);
-    int GetSignificantBandsAverageFloored(const Range& range,
-                                          double ignore_factor);
-
-    /*
-        Gets average of band values with range of a to b (a inclusive, b
-       exclusive) Ignores values under threshold;
-    */
-    double GetAverageOfBandValuesUnderThreshold(int a, int b, double threshold);
-    double GetAverageOfBandValuesUnderThreshold(const Range& range,
-                                                double threshold);
-    int GetAverageOfBandValuesUnderThresholdFloored(int a, int b,
-                                                    double threshold);
-    int GetAverageOfBandValuesUnderThresholdFloored(const Range& range,
-                                                    double threshold);
-
-    double SmoothDamp(double from, double to, double factor);
 };
