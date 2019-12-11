@@ -21,7 +21,7 @@ void ofApp::setup() {
     volume = 0;
 
     sound_player.loadSound(
-        R"(C:\Users\heste\source\repos\CS126FA19\fantastic-finale-kenetec\resources\Danger - 624.mp3)");
+        R"(C:\Users\heste\source\repos\CS126FA19\fantastic-finale-kenetec\resources\songs\Danger - 624.mp3)");
 
     sound_player_2.loadSound(
         R"(C:\Users\heste\source\repos\CS126FA19\fantastic-finale-kenetec\resources\Loop Cult - Unit 808 Sample Pack\LCU_808_samples\LCU_808_drum kits\LCU_808_drum kit 01\LCU_808_DKit_01_Crash.wav)");

@@ -71,3 +71,4 @@
 - Add Serializer
 ### 12/11/19
 - Add save popup modal
+- Remove songs
