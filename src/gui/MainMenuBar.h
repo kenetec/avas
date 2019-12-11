@@ -4,11 +4,13 @@
 #include <ofxImGui.h>
 #include "GuiDrawer.h"
 #include "../music/PlaybackEngine.h"
+#include "SaveToPathModal.h"
 
 class MainMenuBar {
    private:
     GuiDrawer gui_drawer_;
     PlaybackEngine* playback_engine_;
+    SaveToPathModal save_to_path_modal;
    public:
     void setup(GuiDrawer& gui_drawer, PlaybackEngine& playback_engine);
     void draw();

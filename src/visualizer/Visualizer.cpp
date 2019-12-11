@@ -24,11 +24,6 @@ void Visualizer::SetupBars() {
         bar_colors_.push_back(
             start_color_.lerp(end_color_, color_lerp_step * i));
 
-        /*std::shared_ptr<ofRectangle> rect(new ofRectangle());
-        rect->width = ofGetWidth() / kNumOfBands;
-        rect->height = -(fft_smoothed_[i] * 100);
-        rect->x = (ofGetWidth() / kNumOfBands) * i;
-        rect->y = ofGetHeight();*/
         ofRectangle rect;
         rect.width = ofGetWidth() / kNumOfBands;
         rect.x = (ofGetWidth() / kNumOfBands) * i;

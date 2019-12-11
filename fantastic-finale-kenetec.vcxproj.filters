@@ -157,6 +157,12 @@
     <ClCompile Include="src\visualizer\Util.cpp">
       <Filter>src\visualizer</Filter>
     </ClCompile>
+    <ClCompile Include="src\music\Serializer.cpp">
+      <Filter>src\music</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gui\SaveToPathModal.cpp">
+      <Filter>src\gui</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -394,6 +400,12 @@
     </ClInclude>
     <ClInclude Include="src\visualizer\ReactiveObject.h">
       <Filter>src\visualizer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\music\Serializer.h">
+      <Filter>src\music</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gui\SaveToPathModal.h">
+      <Filter>src\gui</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

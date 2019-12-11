@@ -1,6 +1,7 @@
 #include "MainMenuBar.h"
 
-void MainMenuBar::setup(GuiDrawer& gui_drawer, PlaybackEngine& playback_engine) {
+void MainMenuBar::setup(GuiDrawer& gui_drawer,
+                        PlaybackEngine& playback_engine) {
     gui_drawer_ = gui_drawer;
     playback_engine_ = &playback_engine;
 }
@@ -14,6 +15,7 @@ void MainMenuBar::draw() {
             if (ImGui::MenuItem("Open...", "Ctrl+O")) {
             }
             if (ImGui::MenuItem("Save", "Ctrl+S")) {
+                save_to_path_modal.SetActive(true);                
             }
             if (ImGui::MenuItem("Close", "Ctrl+W")) {
             }
@@ -36,9 +38,11 @@ void MainMenuBar::draw() {
             }
             ImGui::EndMenu();
         }
-        
-		ImGui::EndMainMenuBar();
+
+        ImGui::EndMainMenuBar();
     }
+
+    save_to_path_modal.draw(reinterpret_cast<Composer*>(gui_drawer_.GetWindow("Composer"))->GetScore());
 }
 
 void MainMenuBar::Play() {

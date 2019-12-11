@@ -59,6 +59,8 @@ void Instrument::SetInstrumentPath(const std::string& path) {
 void Instrument::SetName(const std::string& name) { name_ = name; }
 std::string& Instrument::GetName() { return name_; }
 
+std::string& Instrument::GetInstrumentPath() { return root_path_; }
+
 /*
 code derived from:
 https://forum.openframeworks.cc/t/an-example-for-how-to-parse-a-json-file/32420

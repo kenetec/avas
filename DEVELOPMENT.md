@@ -67,3 +67,7 @@
 ### 12/9/19
 - Add music
 - Delete TailCircle
+### 12/10/19
+- Add Serializer
+### 12/11/19
+- Add save popup modal

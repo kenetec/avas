@@ -3,6 +3,9 @@
 #include "Note.h"
 #include <vector>
 
+/*
+Add subdivision functionality to this
+*/
 class Beat {
    public:
     Beat();

@@ -192,6 +192,7 @@
     <ClCompile Include="src\gui\MeasureButton.cpp" />
     <ClCompile Include="src\gui\NoteButton.cpp" />
     <ClCompile Include="src\gui\PianoRoll.cpp" />
+    <ClCompile Include="src\gui\SaveToPathModal.cpp" />
     <ClCompile Include="src\main.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
@@ -225,6 +226,7 @@
     <ClCompile Include="src\music\MeasurePlayer.cpp" />
     <ClCompile Include="src\music\PlaybackEngine.cpp" />
     <ClCompile Include="src\music\Score.cpp" />
+    <ClCompile Include="src\music\Serializer.cpp" />
     <ClCompile Include="src\music\SoundLoader.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="src\UserSession.cpp" />
@@ -292,6 +294,7 @@
     <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxImGui\libs\imgui\src\imstb_textedit.h" />
     <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxImGui\libs\imgui\src\imstb_truetype.h" />
     <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxUnitTests\src\ofxUnitTests.h" />
+    <ClInclude Include="src\gui\SaveToPathModal.h" />
     <ClInclude Include="src\music\Beat.h" />
     <ClInclude Include="src\music\Instrument.h" />
     <ClInclude Include="src\music\InstrumentScorePlayer.h" />
@@ -300,6 +303,7 @@
     <ClInclude Include="src\music\Note.h" />
     <ClInclude Include="src\music\PlaybackEngine.h" />
     <ClInclude Include="src\music\Score.h" />
+    <ClInclude Include="src\music\Serializer.h" />
     <ClInclude Include="src\music\SoundLoader.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\UserSession.h" />

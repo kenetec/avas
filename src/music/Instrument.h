@@ -65,6 +65,8 @@ class Instrument {
 	*/
 	std::vector<OctaveMap>& GetSoundMap();
 
+	std::string& GetInstrumentPath();
+
    //private:
     void InitializeSoundMap();
     void LoadSoundMapFile();
