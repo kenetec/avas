@@ -74,3 +74,4 @@
 - Remove songs
 - Add Deserializer
 - Add LoadSongModal
+- Sqaushed loaded song playback bug
