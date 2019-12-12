@@ -163,6 +163,12 @@
     <ClCompile Include="src\gui\SaveToPathModal.cpp">
       <Filter>src\gui</Filter>
     </ClCompile>
+    <ClCompile Include="src\music\Deserializer.cpp">
+      <Filter>src\music</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gui\LoadSongModal.cpp">
+      <Filter>src\gui</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -405,6 +411,12 @@
       <Filter>src\music</Filter>
     </ClInclude>
     <ClInclude Include="src\gui\SaveToPathModal.h">
+      <Filter>src\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\music\Deserializer.h">
+      <Filter>src\music</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gui\LoadSongModal.h">
       <Filter>src\gui</Filter>
     </ClInclude>
   </ItemGroup>

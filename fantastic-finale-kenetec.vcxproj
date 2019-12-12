@@ -189,6 +189,7 @@
     </ClCompile>
     <ClCompile Include="src\gui\GuiDrawer.cpp" />
     <ClCompile Include="src\gui\InstrumentButton.cpp" />
+    <ClCompile Include="src\gui\LoadSongModal.cpp" />
     <ClCompile Include="src\gui\MeasureButton.cpp" />
     <ClCompile Include="src\gui\NoteButton.cpp" />
     <ClCompile Include="src\gui\PianoRoll.cpp" />
@@ -220,6 +221,7 @@
     <ClCompile Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxImGui\libs\imgui\src\imgui_draw.cpp" />
     <ClCompile Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxImGui\libs\imgui\src\imgui_widgets.cpp" />
     <ClCompile Include="src\music\Beat.cpp" />
+    <ClCompile Include="src\music\Deserializer.cpp" />
     <ClCompile Include="src\music\Instrument.cpp" />
     <ClCompile Include="src\music\InstrumentScorePlayer.cpp" />
     <ClCompile Include="src\music\Measure.cpp" />
@@ -262,6 +264,7 @@
     <ClInclude Include="src\gui\GuiDrawer.h" />
     <ClInclude Include="src\gui\GuiWindow.h" />
     <ClInclude Include="src\gui\InstrumentButton.h" />
+    <ClInclude Include="src\gui\LoadSongModal.h" />
     <ClInclude Include="src\gui\MeasureButton.h" />
     <ClInclude Include="src\gui\NoteButton.h" />
     <ClInclude Include="src\gui\PianoRoll.h" />
@@ -296,6 +299,7 @@
     <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\of_v0.10.1_vs2017_release\addons\ofxUnitTests\src\ofxUnitTests.h" />
     <ClInclude Include="src\gui\SaveToPathModal.h" />
     <ClInclude Include="src\music\Beat.h" />
+    <ClInclude Include="src\music\Deserializer.h" />
     <ClInclude Include="src\music\Instrument.h" />
     <ClInclude Include="src\music\InstrumentScorePlayer.h" />
     <ClInclude Include="src\music\Measure.h" />

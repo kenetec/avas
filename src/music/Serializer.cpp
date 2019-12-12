@@ -21,10 +21,12 @@ json Serializer::SaveInstrumentScores(
         InstrumentScore& instrument_score = instrument_scores.at(i);
         nlohmann::json instrument_score_jobj = nlohmann::json::object();
 
-        instrument_score_jobj["instrument"] =
-            instrument_score.instrument->GetInstrumentPath();
-        instrument_score_jobj["measures"] =
-            SaveMeasures(instrument_score.measures);
+        json instrument_jobj = json::object();
+        instrument_jobj["name"] = instrument_score.instrument->GetName();
+        instrument_jobj["path"] = instrument_score.instrument->GetInstrumentPath();
+
+        instrument_score_jobj["instrument"] = instrument_jobj;
+        instrument_score_jobj["measures"] = SaveMeasures(instrument_score.measures);
 
         jarray.push_back(instrument_score_jobj);
     }

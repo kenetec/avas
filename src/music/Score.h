@@ -40,4 +40,6 @@ class Score {
     std::vector<InstrumentScore>& GetMeasureContainers();
     void SetBPM(int bpm_);
     int GetBPM();
+
+    void SetInstrumentScores(std::vector<InstrumentScore>& instrument_scores);
 };

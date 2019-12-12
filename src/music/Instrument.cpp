@@ -61,6 +61,10 @@ std::string& Instrument::GetName() { return name_; }
 
 std::string& Instrument::GetInstrumentPath() { return root_path_; }
 
+void Instrument::SetMeasures(std::vector<Measure>* measures) {
+    measures_ = measures;
+}
+
 /*
 code derived from:
 https://forum.openframeworks.cc/t/an-example-for-how-to-parse-a-json-file/32420

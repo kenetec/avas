@@ -7,12 +7,17 @@ using namespace nlohmann;
 
 class Serializer {
    public:
+    /*
+    {
+    "bpm": 120,
+    "instrument_scores": [...]
+    }*/
     static void SaveScore(const std::string& file_path, Score& score);
 
    private:
     /*
     [
-        {"instrument": "[path to instrument]", "measures": [...]}
+        {"instrument": {"name": string, "path": string}, "measures": [...]}
         ...
     ]
     */
@@ -35,6 +40,7 @@ class Serializer {
     ]
     */
     static json SaveBeats(std::vector<Beat>& beats);
+
     /*
     [
         {"note_name": "C", "octave": 0, "active": true},

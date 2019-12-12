@@ -26,6 +26,12 @@ Composer::~Composer() {}
 
 Score& Composer::GetScore() { return score_; }
 
+void Composer::SetScore(Score& score) {
+    score_ = score;
+    setup();
+    window_active_ = true;
+}
+
 void Composer::setup() {
     window_active_ = false;
 

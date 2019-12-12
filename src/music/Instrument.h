@@ -67,6 +67,8 @@ class Instrument {
 
 	std::string& GetInstrumentPath();
 
+	void SetMeasures(std::vector<Measure>* measures);
+
    //private:
     void InitializeSoundMap();
     void LoadSoundMapFile();

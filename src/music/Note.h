@@ -11,10 +11,12 @@ enum class NoteType {
 };
 
 struct Note {
-    //NoteType note_type;
+    // NoteType note_type;
     std::string note_name_str;
     int octave;
     bool active = false;
 
-    Note(std::string note_name_str, int octave) : note_name_str(note_name_str), octave(octave) {};
+    Note(){};
+    Note(std::string note_name_str, int octave)
+        : note_name_str(note_name_str), octave(octave){};
 };

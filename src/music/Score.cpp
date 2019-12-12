@@ -26,7 +26,8 @@ void Score::PushMeasureContainer(std::vector<Measure>& measures) {
     PushMeasureContainer(nullptr, measures);
 }
 
-void Score::PushMeasureContainer(Instrument* instrument, std::vector<Measure>& measures) {
+void Score::PushMeasureContainer(Instrument* instrument,
+                                 std::vector<Measure>& measures) {
     InstrumentScore measure_container;
     measure_container.instrument = instrument;
     measure_container.measures = measures;
@@ -39,7 +40,7 @@ InstrumentScore* Score::GetMeasureContainer(int index) {
         return &measure_containers_.at(index);
     }
 
-	stringstream ss;
+    stringstream ss;
     ss << "No measure containers found at " << index << " index";
     throw ss.str();
 }
@@ -51,3 +52,8 @@ std::vector<InstrumentScore>& Score::GetMeasureContainers() {
 void Score::SetBPM(int bpm) { bpm_ = bpm; }
 
 int Score::GetBPM() { return bpm_; }
+
+void Score::SetInstrumentScores(
+    std::vector<InstrumentScore>& instrument_scores) {
+    measure_containers_ = instrument_scores;
+}

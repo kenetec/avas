@@ -9,9 +9,9 @@ void SaveToPathModal::draw(Score& score) {
     }
 
     if (ImGui::BeginPopupModal("SaveToPath")) {
-        ImGui::InputText("Name: ", name_input_buffer_,
+        ImGui::InputText(" Name", name_input_buffer_,
                          IM_ARRAYSIZE(name_input_buffer_));
-        ImGui::InputText("Save Path: ", path_input_buffer_, IM_ARRAYSIZE(path_input_buffer_));
+        ImGui::InputText(" Save Path", path_input_buffer_, IM_ARRAYSIZE(path_input_buffer_));
 
         if (ImGui::Button("Save")) {
             stringstream ss;

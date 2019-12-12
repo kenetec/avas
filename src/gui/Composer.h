@@ -32,6 +32,7 @@ class Composer : public GuiWindow {
     ~Composer();
 
     Score& GetScore();
+    void SetScore(Score& score);
 
     void setup() override;
     void draw() override;

@@ -11,6 +11,7 @@ class Beat {
     Beat();
     Beat& Beat::operator=(const Beat& beat);
 	std::vector<Note>& GetNotes() { return notes_; };
+    void SetNotes(std::vector<Note> notes) { notes_ = notes; };
    private:
     std::vector<Note> notes_;
     const int kNotesPerOctaves = 12;
