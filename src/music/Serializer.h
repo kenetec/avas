@@ -17,7 +17,10 @@ class Serializer {
    private:
     /*
     [
-        {"instrument": {"name": string, "path": string}, "measures": [...]}
+        {
+        "instrument": {"name": string, "path": string}, 
+        "measures": [...]
+        }
         ...
     ]
     */

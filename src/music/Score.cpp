@@ -56,4 +56,8 @@ int Score::GetBPM() { return bpm_; }
 void Score::SetInstrumentScores(
     std::vector<InstrumentScore>& instrument_scores) {
     measure_containers_ = instrument_scores;
+    
+    for (InstrumentScore& instrument_score : instrument_scores) {
+        instrument_score.instrument->Load();
+    }
 }

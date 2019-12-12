@@ -5,10 +5,10 @@ Code derived from imgui_demo.cpp
 */
 void LoadSongModal::draw(Composer* composer) {
     if (active_) {
-        ImGui::OpenPopup("LoadSong");
+        ImGui::OpenPopup("Load Song");
     }
 
-    if (ImGui::BeginPopupModal("LoadSong")) {
+    if (ImGui::BeginPopupModal("Load Song")) {
         ImGui::InputText(" Load Path", path_input_buffer_,
                          IM_ARRAYSIZE(path_input_buffer_));
 
