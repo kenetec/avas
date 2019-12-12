@@ -9,12 +9,15 @@ void SaveToPathModal::draw(Score& score) {
     }
 
     if (ImGui::BeginPopupModal("SaveToPath")) {
-        char* input_buffer = new char[kInputBufferSize];
-
-        ImGui::InputText("Save Path: ", input_buffer, kInputBufferSize);
+        ImGui::InputText("Name: ", name_input_buffer_,
+                         IM_ARRAYSIZE(name_input_buffer_));
+        ImGui::InputText("Save Path: ", path_input_buffer_, IM_ARRAYSIZE(path_input_buffer_));
 
         if (ImGui::Button("Save")) {
-            Serializer::SaveScore(input_buffer, score);
+            stringstream ss;
+            ss << path_input_buffer_ << "/" << name_input_buffer_ << ".json";
+
+            Serializer::SaveScore(ss.str(), score);
             ImGui::Text("Saved!");
         }
 

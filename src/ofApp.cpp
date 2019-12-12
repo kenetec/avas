@@ -44,7 +44,7 @@ void ofApp::draw() {
 
     main_menu_bar_.draw();
     gui_drawer_.draw();
-    //ImGui::ShowDemoWindow();
+    ImGui::ShowDemoWindow();
 
     imgui_.end();
 }

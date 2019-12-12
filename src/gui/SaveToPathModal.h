@@ -5,7 +5,9 @@
 
 class SaveToPathModal {
    private:
-    const int kInputBufferSize = 100;
+    char name_input_buffer_[128] = "";
+    char path_input_buffer_[128] = "";
+
     bool active_ = false;
    public:
     SaveToPathModal(){};
