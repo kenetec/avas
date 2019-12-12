@@ -75,7 +75,7 @@ https://openframeworks.cc/ofBook/chapters/shaders.html
 */
 void Visualizer::draw() {
     shader_.begin();
-
+    shader_.setUniform1f("time", ofGetElapsedTimef());
     // bass circle
     bass_circle_.draw();
 
